@@ -4,8 +4,305 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "3eb4efdce8db078b463794bc3a838fd8",
     "packages": [
+        {
+            "name": "asm89/stack-cors",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asm89/stack-cors.git",
+                "reference": "c163e2b614550aedcf71165db2473d936abbced6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asm89/stack-cors/zipball/c163e2b614550aedcf71165db2473d936abbced6",
+                "reference": "c163e2b614550aedcf71165db2473d936abbced6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/http-foundation": "~2.7|~3.0|~4.0",
+                "symfony/http-kernel": "~2.7|~3.0|~4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8.10",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asm89\\Stack\\": "src/Asm89/Stack/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                }
+            ],
+            "description": "Cross-origin resource sharing library and stack middleware",
+            "homepage": "https://github.com/asm89/stack-cors",
+            "keywords": [
+                "cors",
+                "stack"
+            ],
+            "time": "2017-12-20T14:37:45+00:00"
+        },
+        {
+            "name": "barryvdh/laravel-cors",
+            "version": "v0.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-cors.git",
+                "reference": "6ba64a654b4258a3ecc11aba6614c932b3442e30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/6ba64a654b4258a3ecc11aba6614c932b3442e30",
+                "reference": "6ba64a654b4258a3ecc11aba6614c932b3442e30",
+                "shasum": ""
+            },
+            "require": {
+                "asm89/stack-cors": "^1.2",
+                "illuminate/support": "5.3.x|5.4.x|5.5.x|5.6.x",
+                "php": ">=5.5.9",
+                "symfony/http-foundation": "^3.1|^4",
+                "symfony/http-kernel": "^3.1|^4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.x",
+                "phpunit/phpunit": "^4.8|^5.2",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Cors\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Cors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain",
+                "laravel"
+            ],
+            "time": "2018-01-04T06:59:27+00:00"
+        },
+        {
+            "name": "cocur/slugify",
+            "version": "v3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocur/slugify.git",
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.1",
+                "latte/latte": "~2.2",
+                "league/container": "^2.2.0",
+                "mikey179/vfsstream": "~1.6",
+                "mockery/mockery": "~0.9",
+                "nette/di": "~2.2",
+                "phpunit/phpunit": "~4.8|~5.2",
+                "pimple/pimple": "~1.1",
+                "plumphp/plum": "~0.1",
+                "silex/silex": "~1.3",
+                "symfony/config": "~2.4|~3.0",
+                "symfony/dependency-injection": "~2.4|~3.0",
+                "symfony/http-kernel": "~2.4|~3.0",
+                "twig/twig": "~1.26|~2.0",
+                "zendframework/zend-modulemanager": "~2.2",
+                "zendframework/zend-servicemanager": "~2.2",
+                "zendframework/zend-view": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cocur\\Slugify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivo Bathke",
+                    "email": "ivo.bathke@gmail.com"
+                },
+                {
+                    "name": "Florian Eckerstorfer",
+                    "email": "florian@eckerstorfer.co",
+                    "homepage": "https://florian.ec"
+                }
+            ],
+            "description": "Converts a string into a slug.",
+            "keywords": [
+                "slug",
+                "slugify"
+            ],
+            "time": "2018-01-22T09:00:48+00:00"
+        },
+        {
+            "name": "composer/ca-bundle",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/ca-bundle.git",
+                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/943b2c4fcad1ef178d16a713c2468bf7e579c288",
+                "reference": "943b2c4fcad1ef178d16a713c2468bf7e579c288",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "ext-pcre": "*",
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35",
+                "psr/log": "^1.0",
+                "symfony/process": "^2.5 || ^3.0 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\CaBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
+            "keywords": [
+                "cabundle",
+                "cacert",
+                "certificate",
+                "ssl",
+                "tls"
+            ],
+            "time": "2017-11-29T09:37:33+00:00"
+        },
+        {
+            "name": "cviebrock/eloquent-sluggable",
+            "version": "4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
+                "reference": "f3595c9672a063df765d0ac748a02cfaf4257095"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/f3595c9672a063df765d0ac748a02cfaf4257095",
+                "reference": "f3595c9672a063df765d0ac748a02cfaf4257095",
+                "shasum": ""
+            },
+            "require": {
+                "cocur/slugify": "^3.0",
+                "illuminate/config": "~5.6.0",
+                "illuminate/database": "~5.6.0",
+                "illuminate/support": "~5.6.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.6.0",
+                "mockery/mockery": "^0.9.4",
+                "orchestra/database": "~3.6.0",
+                "orchestra/testbench": "~3.6.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cviebrock\\EloquentSluggable\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cviebrock\\EloquentSluggable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Viebrock",
+                    "email": "colin@viebrock.ca"
+                }
+            ],
+            "description": "Easy creation of slugs for your Eloquent models in Laravel 5.",
+            "homepage": "https://github.com/cviebrock/eloquent-sluggable",
+            "keywords": [
+                "eloquent",
+                "eloquent-sluggable",
+                "laravel",
+                "lumen",
+                "slug",
+                "sluggable"
+            ],
+            "time": "2018-02-11T02:19:23+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -367,6 +664,240 @@
             "time": "2018-02-07T20:20:57+00:00"
         },
         {
+            "name": "geoip2/geoip2",
+            "version": "v2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxmind/GeoIP2-php.git",
+                "reference": "63b0d87d47ee8c9431bff70244401db5ced82bd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxmind/GeoIP2-php/zipball/63b0d87d47ee8c9431bff70244401db5ced82bd9",
+                "reference": "63b0d87d47ee8c9431bff70244401db5ced82bd9",
+                "shasum": ""
+            },
+            "require": {
+                "maxmind-db/reader": "~1.0",
+                "maxmind/web-service-common": "~0.4",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "apigen/apigen": "*",
+                "friendsofphp/php-cs-fixer": "2.*",
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeoIp2\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Gregory J. Oschwald",
+                    "email": "goschwald@maxmind.com",
+                    "homepage": "http://www.maxmind.com/"
+                }
+            ],
+            "description": "MaxMind GeoIP2 PHP API",
+            "homepage": "https://github.com/maxmind/GeoIP2-php",
+            "keywords": [
+                "IP",
+                "geoip",
+                "geoip2",
+                "geolocation",
+                "maxmind"
+            ],
+            "time": "2018-01-18T21:30:24+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2018-03-26T16:33:04+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -655,6 +1186,64 @@
             "time": "2018-03-06T17:34:36+00:00"
         },
         {
+            "name": "lcobucci/jwt",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "0b5930be73582369e10c4d4bb7a12bac927a203c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/0b5930be73582369e10c4d4bb7a12bac927a203c",
+                "reference": "0b5930be73582369e10c4d4bb7a12bac927a203c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mdanter/ecc": "~0.3.1",
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~4.5",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2017-09-01T08:23:26+00:00"
+        },
+        {
             "name": "league/flysystem",
             "version": "1.0.43",
             "source": {
@@ -739,6 +1328,108 @@
             "time": "2018-03-01T10:27:04+00:00"
         },
         {
+            "name": "maxmind-db/reader",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxmind/MaxMind-DB-Reader-php.git",
+                "reference": "e042b4f8a2dff41e19019faf16427178b07fbd58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxmind/MaxMind-DB-Reader-php/zipball/e042b4f8a2dff41e19019faf16427178b07fbd58",
+                "reference": "e042b4f8a2dff41e19019faf16427178b07fbd58",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.*",
+                "phpunit/phpunit": "4.* || 5.*",
+                "satooshi/php-coveralls": "1.0.*",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "suggest": {
+                "ext-bcmath": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
+                "ext-gmp": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
+                "ext-maxminddb": "A C-based database decoder that provides significantly faster lookups"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MaxMind\\Db\\": "src/MaxMind/Db"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Gregory J. Oschwald",
+                    "email": "goschwald@maxmind.com",
+                    "homepage": "http://www.maxmind.com/"
+                }
+            ],
+            "description": "MaxMind DB Reader API",
+            "homepage": "https://github.com/maxmind/MaxMind-DB-Reader-php",
+            "keywords": [
+                "database",
+                "geoip",
+                "geoip2",
+                "geolocation",
+                "maxmind"
+            ],
+            "time": "2018-02-21T21:23:33+00:00"
+        },
+        {
+            "name": "maxmind/web-service-common",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxmind/web-service-common-php.git",
+                "reference": "61a9836fa3bb1743ab89752bae5005d71e78c73b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxmind/web-service-common-php/zipball/61a9836fa3bb1743ab89752bae5005d71e78c73b",
+                "reference": "61a9836fa3bb1743ab89752bae5005d71e78c73b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/ca-bundle": "^1.0.3",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.*",
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MaxMind\\Exception\\": "src/Exception",
+                    "MaxMind\\WebService\\": "src/WebService"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Gregory Oschwald",
+                    "email": "goschwald@maxmind.com"
+                }
+            ],
+            "description": "Internal MaxMind Web Service API",
+            "homepage": "https://github.com/maxmind/web-service-common-php",
+            "time": "2018-02-12T22:31:54+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -815,6 +1506,69 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "namshi/jose",
+            "version": "7.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namshi/jose.git",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namshi/jose/zipball/89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "shasum": ""
+            },
+            "require": {
+                "ext-date": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-spl": "*",
+                "php": ">=5.5",
+                "symfony/polyfill-php56": "^1.0"
+            },
+            "require-dev": {
+                "phpseclib/phpseclib": "^2.0",
+                "phpunit/phpunit": "^4.5|^5.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "ext-openssl": "Allows to use OpenSSL as crypto engine.",
+                "phpseclib/phpseclib": "Allows to use Phpseclib as crypto engine, use version ^2.0."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Namshi\\JOSE\\": "src/Namshi/JOSE/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Nadalin",
+                    "email": "alessandro.nadalin@gmail.com"
+                },
+                {
+                    "name": "Alessandro Cinelli (cirpo)",
+                    "email": "alessandro.cinelli@gmail.com"
+                }
+            ],
+            "description": "JSON Object Signing and Encryption library for PHP.",
+            "keywords": [
+                "JSON Web Signature",
+                "JSON Web Token",
+                "JWS",
+                "json",
+                "jwt",
+                "token"
+            ],
+            "time": "2016-12-05T07:27:31+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1016,6 +1770,56 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -1807,6 +2611,62 @@
             "time": "2018-01-30T19:27:44+00:00"
         },
         {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "ebc999ce5f14204c5150b9bd15f8f04e621409d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/ebc999ce5f14204c5150b9bd15f8f04e621409d8",
+                "reference": "ebc999ce5f14204c5150b9bd15f8f04e621409d8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2018-01-30T19:27:44+00:00"
+        },
+        {
             "name": "symfony/polyfill-php72",
             "version": "v1.7.0",
             "source": {
@@ -1860,6 +2720,58 @@
                 "shim"
             ],
             "time": "2018-01-31T17:43:24+00:00"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "e17c808ec4228026d4f5a8832afa19be85979563"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/e17c808ec4228026d4f5a8832afa19be85979563",
+                "reference": "e17c808ec4228026d4f5a8832afa19be85979563",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2018-01-31T18:08:44+00:00"
         },
         {
             "name": "symfony/process",
@@ -2171,6 +3083,154 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "torann/geoip",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-geoip.git",
+                "reference": "b5d77ed475a3a4266ae91242686ce017d8430db9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/b5d77ed475a3a4266ae91242686ce017d8430db9",
+                "reference": "b5d77ed475a3a4266ae91242686ce017d8430db9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "geoip2/geoip2": "~2.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8"
+            },
+            "suggest": {
+                "geoip2/geoip2": "Required to use the MaxMind database or web service with GeoIP (~2.1).",
+                "monolog/monolog": "Allows for storing location not found errors to the log"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Torann\\GeoIP\\GeoIPServiceProvider"
+                    ],
+                    "aliases": {
+                        "GeoIP": "Torann\\GeoIP\\Facades\\GeoIP"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Torann\\GeoIP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "torann@gmail.com"
+                }
+            ],
+            "description": "Support for multiple GeoIP services.",
+            "keywords": [
+                "IP API",
+                "geoip",
+                "geolocation",
+                "infoDB",
+                "laravel",
+                "laravel 5",
+                "location",
+                "maxmind"
+            ],
+            "time": "2017-09-19T23:43:25+00:00"
+        },
+        {
+            "name": "tymon/jwt-auth",
+            "version": "1.0.0-rc.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
+                "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/contracts": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/http": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "lcobucci/jwt": "^3.2",
+                "namshi/jose": "^7.0",
+                "nesbot/carbon": "^1.0",
+                "php": "^5.5.9 || ^7.0"
+            },
+            "require-dev": {
+                "cartalyst/sentinel": "2.0.*",
+                "illuminate/console": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/database": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/routing": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "mockery/mockery": ">=0.9.9",
+                "phpunit/phpunit": "~4.8 || ~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "1.0-dev"
+                },
+                "laravel": {
+                    "aliases": {
+                        "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
+                        "JWTFactory": "Tymon\\JWTAuth\\Facades\\JWTFactory"
+                    },
+                    "providers": [
+                        "Tymon\\JWTAuth\\Providers\\LaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "https://tymon.xyz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Web Token Authentication for Laravel and Lumen",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
+                "laravel"
+            ],
+            "time": "2018-02-07T20:55:14+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
