@@ -6,9 +6,14 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanFavorite;
+use Overtrue\LaravelFollow\Traits\CanVote;
 
 class User extends Authenticatable implements JWTSubject
 {
+    use CanFollow, CanBeFollowed, CanFavorite, CanVote;
     use Notifiable;
     use Sluggable;
 
@@ -28,6 +33,16 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $hidden = [
         'email', 'password', 'twitter', 'facebook', 'remember_token', 'provider', 'provider_uid', 'latitude', 'longitude', 'postcode', 'recovery_token', 'recovery_sent_at', 'confirmation_token', 'confirmation_sent_at',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'admin' => 'boolean',
+        'author' => 'boolean',
     ];
 
     /**

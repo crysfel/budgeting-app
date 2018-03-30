@@ -160,8 +160,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Third party providers
+         */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
     ],
 
     /*

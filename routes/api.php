@@ -21,6 +21,10 @@ Route::group(['middleware' => 'cors'], function () {
 
         Route::group(['middleware' => 'jwt.auth'], function() {
             Route::get('users', 'Api\UserController@index');
+            Route::get('users/{user_id}/followers', 'Api\FollowerController@followers');
+            Route::get('users/{user_id}/followings', 'Api\FollowerController@followings');
+            Route::get('users/{user_id}/follow', 'Api\FollowerController@follow');
+            Route::get('users/{user_id}/unfollow', 'Api\FollowerController@unfollow');
         });
     });
 });

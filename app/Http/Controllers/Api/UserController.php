@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Serializers\UserSerializer;
 use Validator;
 use Config;
 use URL;
@@ -21,8 +22,9 @@ class UserController extends Controller
    *
    * @return void
    */
-  public function __construct()
+  public function __construct(UserSerializer $userSerializer)
   {
+    $this->userSerializer = $userSerializer;
     $this->validations = [
       'name'         => 'required|min:3|max:255',
       'about'        => 'max:350',
@@ -48,9 +50,9 @@ class UserController extends Controller
       return response()->json([
         'success'   => true,
         'meta'      => [
-            'total' => $total
+          'total' => $total,
         ],
-        'users'     => $users,
+        'users'     => $this->userSerializer->list($users),
       ]);
     }
     
@@ -59,5 +61,4 @@ class UserController extends Controller
       'errors'    => ['You don\'t have access to this resource'],
     ], 403);
   }
-
 }

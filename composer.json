@@ -13,6 +13,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "overtrue/laravel-follow": "^1.1",
         "torann/geoip": "^1.0",
         "tymon/jwt-auth": "^1.0.0-rc.2"
     },

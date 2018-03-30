@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RecoverPassword;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Http\Serializers\UserSerializer;
 use App\User;
 use App\Activity;
 use GuzzleHttp\Client;
@@ -25,14 +26,9 @@ use Response;
 class AuthController extends Controller
 {
 
-    public function __construct()
+    public function __construct(UserSerializer $userSerializer)
     {
-        // Apply the jwt.auth middleware to all methods in this controller
-        // except for the authenticate method. We don't want to prevent
-        // the user from retrieving their token if they don't already have it
-        // $this->middleware('jwt.auth', ['except' => ['authenticate', 'signup','facebook', 'forgot', 'recover']]);
-
-        // $this->userRepository = $userRepository;
+        $this->userSerializer = $userSerializer;
 
         $this->validations = [
             'email'      => 'required|email',
@@ -71,7 +67,7 @@ class AuthController extends Controller
         return response()->json([
             'success'   => true,
             'token' => $token,
-            'user'  => $user
+            'user'  => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
         ]);
     }
 
@@ -146,7 +142,7 @@ class AuthController extends Controller
         return response()->json([
             'success'   => true,
             'token'     => $token,
-            'user'      => $user
+            'user'  => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
         ]);
     }
 
@@ -211,7 +207,7 @@ class AuthController extends Controller
             return response()->json([
                 'success'   => true,
                 'token'     => JWTAuth::fromUser($user),
-                'user'      => $user
+                'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
             ]);
         }
         // Step 3b. Create a new user account or return an existing one.
@@ -224,7 +220,7 @@ class AuthController extends Controller
                 return response()->json([
                     'success'   => true,
                     'token'     => JWTAuth::fromUser($user),
-                    'user'      => $user
+                    'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
                 ]);
             }else {
                 // Some users doesn't have email on facebook
@@ -250,7 +246,7 @@ class AuthController extends Controller
                     return response()->json([
                         'success'   => true,
                         'token'     => JWTAuth::fromUser($user),
-                        'user'      => $user
+                        'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
                     ]);
                 }
             }
@@ -284,7 +280,6 @@ class AuthController extends Controller
             $user->author   = Config::get('app.is_new_user_author');
 
             $user->save();
-            $user->playlists;
 
             //create activity for signup
             $activity = new Activity();
@@ -299,7 +294,7 @@ class AuthController extends Controller
             return response()->json([
                 'success'   => true,
                 'token'     => JWTAuth::fromUser($user),
-                'user'      => $user
+                'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
             ]);
         }
     }
