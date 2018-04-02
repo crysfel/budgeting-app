@@ -67,7 +67,7 @@ class AuthController extends Controller
         return response()->json([
             'success'   => true,
             'token' => $token,
-            'user'  => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+            'user'  => $this->userSerializer->one($user, ['basic', 'full', 'private']),
         ]);
     }
 
@@ -123,7 +123,10 @@ class AuthController extends Controller
             $user->save();
 
         } catch (Exception $e) {
-            return Response::json(['error' => 'User already exists.'], HttpResponse::HTTP_CONFLICT);
+            return Response::json([
+                'success'   => false,
+                'errors'    => ['User already exists.'],
+            ], HttpResponse::HTTP_CONFLICT);
         }
 
         //5.- Create activity
@@ -142,7 +145,7 @@ class AuthController extends Controller
         return response()->json([
             'success'   => true,
             'token'     => $token,
-            'user'  => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+            'user'  => $this->userSerializer->one($user, ['basic', 'full', 'private']),
         ]);
     }
 
@@ -207,7 +210,7 @@ class AuthController extends Controller
             return response()->json([
                 'success'   => true,
                 'token'     => JWTAuth::fromUser($user),
-                'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+                'user'      => $this->userSerializer->one($user, ['basic', 'full', 'private']),
             ]);
         }
         // Step 3b. Create a new user account or return an existing one.
@@ -220,7 +223,7 @@ class AuthController extends Controller
                 return response()->json([
                     'success'   => true,
                     'token'     => JWTAuth::fromUser($user),
-                    'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+                    'user'      => $this->userSerializer->one($user, ['basic', 'full', 'private']),
                 ]);
             }else {
                 // Some users doesn't have email on facebook
@@ -246,7 +249,7 @@ class AuthController extends Controller
                     return response()->json([
                         'success'   => true,
                         'token'     => JWTAuth::fromUser($user),
-                        'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+                        'user'      => $this->userSerializer->one($user, ['basic', 'full', 'private']),
                     ]);
                 }
             }
@@ -294,7 +297,7 @@ class AuthController extends Controller
             return response()->json([
                 'success'   => true,
                 'token'     => JWTAuth::fromUser($user),
-                'user'      => $this->userSerializer->one($user, ['full' => true, 'private' => true]),
+                'user'      => $this->userSerializer->one($user, ['basic', 'full', 'private']),
             ]);
         }
     }

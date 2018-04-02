@@ -2,20 +2,21 @@
 namespace App\Http\Serializers;
 
 class UserSerializer extends BaseSerializer {
-  protected $basic = ['id', 'slug', 'name', 'image', 'about'];
+  protected $ids = ['id', 'slug'];
+  protected $basic = ['name', 'image', 'about'];
   protected $full = [
     'occupation',
     'website',
     'country',
     'admin',
     'author',
-    ['column' => 'created_at', 'field' => 'time'],
+    ['mapping' => 'created_at', 'name' => 'time'],
   ];
   protected $private = [
     'email',
     'gender',
     'dob',
-    ['column' => 'confirmed_at', 'field' => 'confirmed'],
+    ['mapping' => 'confirmed_at', 'name' => 'confirmed'],
   ];
 
   protected function parseConfirmed_at($user) {

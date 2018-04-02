@@ -2,6 +2,7 @@
 namespace App\Http\Serializers;
 
 class BaseSerializer {
+  protected $ids = [];
   protected $basic = [];
   protected $full = [];
   protected $private = [];
@@ -13,15 +14,24 @@ class BaseSerializer {
   }
 
   public function one($model, $options = []) {
-    // Basic information for this model
     $json = [];
-    foreach ($this->basic as $field) {
+
+    // By default returns only the IDs
+    foreach ($this->ids as $field) {
       $config = $this->getField($model, $field);
       $json[$config['name']] = $config['value'];
     }
 
+    // Basic information for this model
+    if (in_array('basic', $options)) {
+      foreach ($this->basic as $field) {
+        $config = $this->getField($model, $field);
+        $json[$config['name']] = $config['value'];
+      }
+    }
+
     // Return full model's information if required by the options
-    if (isset($options['full'])) {
+    if (in_array('full', $options)) {
       foreach ($this->full as $field) {
         $config = $this->getField($model, $field);
         $json[$config['name']] = $config['value'];
@@ -29,7 +39,7 @@ class BaseSerializer {
     }
 
     // Return private information if in options
-    if (isset($options['private'])) {
+    if (in_array('private', $options)) {
       foreach ($this->private as $field) {
         $config = $this->getField($model, $field);
         $json[$config['name']] = $config['value'];
@@ -37,6 +47,15 @@ class BaseSerializer {
     }
 
     return $json;
+  }
+
+  public function paginator($data) {
+    return [
+      'count'=> $data->count(),
+      'current' => $data->currentPage(),
+      'perPage' => $data->perPage(),
+      'total'=> $data->total(),
+    ];
   }
 
   /**
@@ -47,18 +66,18 @@ class BaseSerializer {
     $result = [];
 
     if (is_array($field)) {
-      $parseMethod = 'parse'.ucfirst($field['column']);
-      $customField = $field['column'];
+      $parseMethod = 'parse'.ucfirst($field['mapping']);
+      $customField = $field['mapping'];
 
-      if (isset($field['field'])) {
-        $customField = $field['field'];
+      if (isset($field['name'])) {
+        $customField = $field['name'];
       }
 
       $result['name'] = $customField;
       if (method_exists($this, $parseMethod)) {
         $result['value'] = $this->{$parseMethod}($model);
       } else {
-        $result['value'] = $model->{$field['column']};
+        $result['value'] = $model->{$field['mapping']};
       }
     } else {
       $parseMethod = 'parse'.ucfirst($field);

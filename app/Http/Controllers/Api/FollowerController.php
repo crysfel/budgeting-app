@@ -42,7 +42,7 @@ class FollowerController extends Controller
         'meta'      => [
             'total' => $total,
         ],
-        'followers'     => $this->userSerializer->list($users),
+        'followers'     => $this->userSerializer->list($users, ['basic']),
       ]);
     }
 
@@ -68,7 +68,7 @@ class FollowerController extends Controller
         'meta'      => [
             'total' => $total,
         ],
-        'followers'     => $this->userSerializer->list($users),
+        'followers'     => $this->userSerializer->list($users, ['basic']),
       ]);
     }
 

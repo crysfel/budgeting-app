@@ -25,6 +25,12 @@ Route::group(['middleware' => 'cors'], function () {
             Route::get('users/{user_id}/followings', 'Api\FollowerController@followings');
             Route::get('users/{user_id}/follow', 'Api\FollowerController@follow');
             Route::get('users/{user_id}/unfollow', 'Api\FollowerController@unfollow');
+
+            Route::get('posts', 'Api\PostController@index');
+            Route::post('posts', 'Api\PostController@store');
+            Route::put('posts/{id}', 'Api\PostController@update');
+            Route::get('posts/{id}', 'Api\PostController@show');
+            Route::delete('posts/{id}', 'Api\PostController@destroy');
         });
     });
 });

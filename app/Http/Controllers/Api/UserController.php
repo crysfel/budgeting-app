@@ -52,7 +52,7 @@ class UserController extends Controller
         'meta'      => [
           'total' => $total,
         ],
-        'users'     => $this->userSerializer->list($users),
+        'users'     => $this->userSerializer->list($users, ['basic']),
       ]);
     }
     
