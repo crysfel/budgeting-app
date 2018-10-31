@@ -187,22 +187,21 @@ class TransactionController extends Controller
    */
   public function destroy($id)
   {
-    // $user = $this->guard()->user();
-    // $post = Post::find($id);
-
-    // if ($user->can('delete', $post)) {
-    //   // @TODO Delete all dependencies if any
-    //   $post->delete();
+    $user = $this->guard()->user();
+    $transaction = Transaction::find($id);
+    
+    if ($user->can('delete', $transaction)) {
+      $transaction->delete();
 
       return response()->json([
           'success'   => true,
-          // 'message'   => 'Your post has been deleted.'
+          'message'   => 'Your transaction has been deleted.'
       ]);
-    // }
+    }
 
-    // return response()->json([
-    //   'success'   => false,
-    //   'errors'    => ['You are not the author of this blog post.']
-    // ], 403);
+    return response()->json([
+      'success'   => false,
+      'errors'    => ['You are not the author of this transaction.']
+    ], 403);
   }
 }
