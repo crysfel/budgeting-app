@@ -31,6 +31,7 @@ class TransactionController extends Controller
     $this->validations = [
       'description'  => 'required|min:3|max:255',
       'amount'       => 'required|numeric',
+      'tags'         => 'required',
     ];
   }
 
@@ -99,7 +100,7 @@ class TransactionController extends Controller
     $record->fill($request->all());
     $record->user_id = $user->id;
     $record->save();
-
+    $record->tag($request->input('tags'));
 
     $activity = new Activity();
     $activity->fill([
@@ -141,6 +142,7 @@ class TransactionController extends Controller
 
       $transaction->fill($request->all());
       $transaction->save();
+      $record->setTags($request->input('tags'));
 
       return response()->json([
         'success'   => true,
@@ -167,6 +169,7 @@ class TransactionController extends Controller
     $transaction = Transaction::find($id);
     
     if ($user->can('delete', $transaction)) {
+      $transaction->untag();
       $transaction->delete();
 
       return response()->json([

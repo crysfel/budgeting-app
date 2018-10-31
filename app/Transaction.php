@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Tags\TaggableTrait;
+use Cartalyst\Tags\TaggableInterface;
 
-class Transaction extends Model
+class Transaction extends Model implements TaggableInterface
 {
+    use TaggableTrait;
+    
     /**
      * The attributes that are mass assignable.
      *
