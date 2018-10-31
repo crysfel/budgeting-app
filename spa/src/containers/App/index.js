@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import styles from './styles.module.scss';
+import { Router } from "@reach/router";
+import Home from '../../pages/Home';
+import Dashboard from '../../pages/Dashboard';
+import Auth from '../../pages/Auth';
+// import styles from './styles.module.scss';
 
 class App extends Component {
   render() {
-    return (
-      <div className={styles.app}>
-        <header className={styles.header}>
-          
-        </header>
-      </div>
-    );
+    return <Router>
+        <Home path="/" />
+        <Dashboard path="/dashboard" />
+        <Auth path="/auth" />
+      </Router>;
   }
 }
 
