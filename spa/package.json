@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "yarn watch:css & react-scripts start",
+    "build": "yarn build:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/theme/base.css -o src/index.css",
+    "watch:css": "postcss src/theme/base.css -o src/index.css -w"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
@@ -25,6 +27,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.9.4"
+    "autoprefixer": "^9.3.1",
+    "node-sass": "^4.9.4",
+    "postcss-cli": "^6.0.1",
+    "tailwindcss": "^0.6.6"
   }
 }

@@ -6,7 +6,6 @@ import Login from '../../pages/Auth/Login';
 import SignUp from '../../pages/Auth/SignUp';
 import Main from '../Layouts/Main';
 import Full from '../Layouts/Full';
-// import styles from './styles.module.scss';
 
 class App extends Component {
   render() {
