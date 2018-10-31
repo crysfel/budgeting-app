@@ -29,4 +29,29 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Returns the latest transactions by the given options:
+     *  - expenses: `true` Returns only the expenses transactions
+     *  - income: `true` Returns only the income transactions 
+     *  - user_id: The user id to return transactions for
+     */
+    public function scopeLatest($query, $options = []) {
+        $result = $query;
+
+        // Returns only the expenses transactions
+        if (isset($options['expenses'])) {
+            $result = $result->where('is_expense', true);
+        } else if (isset($options['income'])) {
+            // Returns only income but only if expenses is not present
+            $result = $result->where('is_expense', false);
+        }
+        
+        // Returns only by selected user_id
+        if (isset($options['user_id'])) {
+            $result = $result->where('user_id', $options['user_id']);
+        }
+
+        return $result->orderBy('created_at', 'DESC');
+    }
 }

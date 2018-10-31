@@ -35,26 +35,23 @@ class TransactionController extends Controller
   }
 
   /**
-   * Display a listing of transactions.
+   * Display a listing of transactions for the current user.
    *
    * @return \Illuminate\Http\Response
    */
   public function index(Request $request)
   {
     $user = $this->guard()->user();
-
-    if ($user->can('index', Transaction::class)) {
-      
-
-      return response()->json([
-        'success'   => true,
-      ]);
-    }
+    $options = [
+      'user_id' => $user->id,
+    ];
+    $transactions = Transaction::latest($options)->paginate();
 
     return response()->json([
-      'success'   => false,
-      'errors'    => ['Only authors can access this resource.']
-    ], 403);
+      'success'   => true,
+      'paginator' => $this->transactionSerializer->paginator($transactions),
+      'transactions'     => $this->transactionSerializer->list($transactions->items(), ['basic']),
+    ]);
   }
 
   /**
