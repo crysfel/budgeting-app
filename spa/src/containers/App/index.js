@@ -15,7 +15,7 @@ class App extends Component {
         <Main path="/app">
           <Dashboard path="dashboard" />
         </Main>
-        <Full path="/auth">
+        <Full path="/auth" className="test">
           <Login path="login" />
           <SignUp path="signup" />
         </Full>
