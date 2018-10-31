@@ -126,57 +126,33 @@ class TransactionController extends Controller
    */
   public function update(Request $request, $id)
   {
-    // $user = $this->guard()->user();
-    // $post = Post::find($id);
-    // $createActivity = false;
+    $user = $this->guard()->user();
+    $transaction = Transaction::find($id);
 
-    // if ($user->can('update', $post)) {
-    //   $validator = Validator::make($request->all(), $this->validations);
+    if ($user->can('update', $transaction)) {
+      $validator = Validator::make($request->all(), $this->validations);
 
-    //   if ($validator->fails()) {
-    //     return response()->json([
-    //       'success'=> false,
-    //       'errors' => $validator->errors()->all(),
-    //     ], 400);
-    //   }
+      if ($validator->fails()) {
+        return response()->json([
+          'success'=> false,
+          'errors' => $validator->errors()->all(),
+        ], 400);
+      }
 
-    //   $post->fill($request->all());
-    //   $post->allow_comments = $request->input('allow_comments') != false;
-
-    //   if($post->published == false && $request->input('published') == true){
-    //     $post->published    = true;
-    //     $post->created_at   = Carbon::now();
-
-    //     $createActivity = true;
-    //   }else{
-    //     $post->published = $request->input('published') == true;
-    //   }
-
-    //   $post->save();
-
-    //   if($createActivity){
-    //     $activity = new Activity();
-    //     $activity->fill([
-    //       'action'         => 'published-post',
-    //       'user_id'        => $user->id,
-    //       'reference_type' => Post::class,
-    //       'reference_id'   => $post->id,
-    //     ]);
-    //     $activity->save();
-    //   }
+      $transaction->fill($request->all());
+      $transaction->save();
 
       return response()->json([
         'success'   => true,
-        // 'message'   => 'Your post has been updated.',
-        // 'post'      => $this->postSerializer->one($post),
+        'message'   => 'Your transaction has been updated.',
+        'transaction'      => $this->transactionSerializer->one($transaction),
       ]);
-
-    // }
+    }
         
-    // return response()->json([
-    //   'success'   => false,
-    //   'errors'    => ['You are not the author of this blog post.']
-    // ], 403);
+    return response()->json([
+      'success'   => false,
+      'errors'    => ['You are not the author of this transaction.']
+    ], 403);
   }
 
   /**

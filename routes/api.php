@@ -28,6 +28,7 @@ Route::group(['middleware' => 'cors'], function () {
 
             Route::get('transactions', 'Api\TransactionController@index');
             Route::post('transactions', 'Api\TransactionController@store');
+            Route::put('transactions/{id}', 'Api\TransactionController@update');
             Route::delete('transactions/{id}', 'Api\TransactionController@destroy');
 
             Route::get('posts', 'Api\PostController@index');
