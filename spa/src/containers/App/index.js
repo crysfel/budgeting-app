@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './styles.css';
+import styles from './styles.module.scss';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className={styles.app}>
+        <header className={styles.header}>
           
         </header>
       </div>
