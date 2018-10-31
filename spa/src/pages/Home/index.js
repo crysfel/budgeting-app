@@ -6,8 +6,9 @@ export default function Home() {
     <Fragment>
       <h1>Home</h1>
       <Link to="/">Home</Link> |{" "}
-      <Link to="/dashboard">Dashboard</Link>  |{" "}
-      <Link to="/auth">Login</Link>
+      <Link to="/app/dashboard">Dashboard</Link>  |{" "}
+      <Link to="/auth/login">Login</Link> |{" "}
+      <Link to="/auth/signup">Sign up</Link>
     </Fragment>
   );
 }
