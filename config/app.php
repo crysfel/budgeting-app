@@ -163,9 +163,10 @@ return [
         /**
          * Third party providers
          */
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
-        Overtrue\LaravelFollow\FollowServiceProvider::class,
+        \Overtrue\LaravelFollow\FollowServiceProvider::class,
+        \Cartalyst\Tags\TagsServiceProvider::class,
     ],
 
     /*

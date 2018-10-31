@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cartalyst\Tags\TaggableTrait;
+use Cartalyst\Tags\TaggableInterface;
 
-class Post extends Model
+class Post extends Model implements TaggableInterface
 {
     use Sluggable;
+    use TaggableTrait;
 
     /**
      * The attributes that are mass assignable.
