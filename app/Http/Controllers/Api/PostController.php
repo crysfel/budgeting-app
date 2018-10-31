@@ -20,7 +20,7 @@ class PostController extends Controller
   /**
    * Create a new controller instance.
    *
-   * @param  TaskRepository  $tasks
+   * @param  PostSerializer  $postSerializer
    * @return void
    */
   public function __construct(PostSerializer $postSerializer)
@@ -121,6 +121,7 @@ class PostController extends Controller
       $record->allow_comments = $request->input('allow_comments') != false;
       $record->published = $request->input('published') == true;
       $record->save();
+      $record->tag($request->input('tags'));
 
       if ($record->published) {
         // Create activity if post is published
@@ -173,17 +174,18 @@ class PostController extends Controller
 
       $post->fill($request->all());
       $post->allow_comments = $request->input('allow_comments') != false;
-
+      
       if($post->published == false && $request->input('published') == true){
         $post->published    = true;
         $post->created_at   = Carbon::now();
-
+        
         $createActivity = true;
       }else{
         $post->published = $request->input('published') == true;
       }
-
+      
       $post->save();
+      $post->setTags($request->input('tags'));
 
       if($createActivity){
         $activity = new Activity();
