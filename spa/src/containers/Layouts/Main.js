@@ -14,8 +14,15 @@ export default function Main({ children }) {
 
   if (isAuthenticated) {
     return (
-      <div>
-        {children}
+      <div className="h-screen flex flex-col">
+        <div className="bg-orange-light flex">
+          <Link to="/app/dashboard" className="block text-center no-underline flex-1 p-4 text-sm text-white">Dashboard</Link>
+          <Link to="/app/transactions/add/expense" className="block text-center no-underline flex-1 p-4 text-sm text-white">Add Expense</Link>
+          <Link to="/app/transactions/add/income" className="block text-center no-underline flex-1 p-4 text-sm text-white">Add Income</Link>
+        </div>
+        <div className="flex-1 p-4 overflow-auto">
+          {children}
+        </div>
       </div>
     );
   }
