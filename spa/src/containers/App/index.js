@@ -1,15 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Router } from "@reach/router";
-import Home from '../../pages/Home';
-import Dashboard from '../../pages/Dashboard';
-import Login from '../../pages/Auth/Login';
-import SignUp from '../../pages/Auth/SignUp';
-import Main from '../Layouts/Main';
-import Full from '../Layouts/Full';
+import { StoreProvider } from 'redux-react-hook';
 
-class App extends Component {
-  render() {
-    return (
+import { bootstrap } from 'store/modules/auth/actions';
+
+import Home from 'pages/Home';
+import Dashboard from 'pages/Dashboard';
+import Login from 'pages/Auth/Login';
+import SignUp from 'pages/Auth/SignUp';
+import Main from 'containers/Layouts/Main';
+import Full from 'containers//Layouts/Full';
+import store from 'store';
+
+export default function App() {
+  useEffect(() => {
+    store.dispatch(bootstrap());
+  });
+
+  return (
+    <StoreProvider value={store}>
       <Router>
         <Home path="/" />
         <Main path="/app">
@@ -20,8 +29,6 @@ class App extends Component {
           <SignUp path="signup" />
         </Full>
       </Router>
-    );
-  }
+    </StoreProvider>
+  );
 }
-
-export default App;
