@@ -21,6 +21,8 @@ export const getLatestGroupedByDate = createSelector(
       }
       const subgroup = results[index];
       subgroup.items.push(item);
+
+      item.tags = item.tags.map(tag => tag.name);
     });
 
     // Sum all transactions in each group
