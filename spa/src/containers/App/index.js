@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Router } from "@reach/router";
 import { StoreProvider } from 'redux-react-hook';
 
-import { bootstrap } from 'store/modules/auth/actions';
+import { bootstrap } from 'store/modules/bootstrap/actions';
 
 import Home from 'pages/Home';
 import Dashboard from 'pages/Dashboard';

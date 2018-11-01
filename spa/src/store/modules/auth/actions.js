@@ -1,6 +1,6 @@
 import generateActions from 'utils/actions';
 import { navigate } from '@reach/router';
-import { setCookie, getCookie } from 'utils/cookies';
+import { setCookie } from 'utils/cookies';
 import Config from 'config';
 
 export const LOGIN = generateActions('auth/LOGIN');
@@ -57,20 +57,5 @@ export function setToken(token) {
     payload: {
       token,
     },
-  };
-}
-
-/**
- * Checks if there's a token in the cookie and
- * then loads the user's information.
- */
-export function bootstrap() {
-  return (dispatch) => {
-    const token = getCookie(Config.cookies.token);
-    
-    if (token) {
-      dispatch(setToken(token));
-      dispatch(loadCurrentUser());
-    }
   };
 }
