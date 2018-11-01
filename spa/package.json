@@ -1,0 +1,39 @@
+{
+  "name": "spa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn watch:css & react-scripts start",
+    "build": "yarn build:css && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/theme/base.css -o src/index.css",
+    "watch:css": "postcss src/theme/base.css -o src/index.css -w"
+  },
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "classnames": "^2.2.6",
+    "humps": "^2.0.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.0",
+    "redux": "^4.0.1",
+    "redux-react-hook": "^2.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.3.1",
+    "node-sass": "^4.9.4",
+    "postcss-cli": "^6.0.1",
+    "redux-devtools": "^3.4.1",
+    "tailwindcss": "^0.6.6"
+  }
+}
