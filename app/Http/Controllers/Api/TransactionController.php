@@ -46,7 +46,7 @@ class TransactionController extends Controller
     $options = [
       'user_id' => $user->id,
     ];
-    $transactions = Transaction::latest($options)->paginate();
+    $transactions = Transaction::latest($options)->paginate(100);
 
     return response()->json([
       'success'   => true,
