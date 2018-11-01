@@ -61,4 +61,18 @@ class UserController extends Controller
       'errors'    => ['You don\'t have access to this resource'],
     ], 403);
   }
+
+  /**
+   * Returns the current user's profile
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function current(Request $request) {
+    $user = $this->guard()->user();
+
+    return response()->json([
+      'success'   => true,
+      'user'      => $this->userSerializer->one($user, ['basic', 'full', 'private']),
+    ]);
+  }
 }
