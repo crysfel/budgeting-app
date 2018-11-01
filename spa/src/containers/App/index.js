@@ -7,6 +7,7 @@ import { bootstrap } from 'store/modules/auth/actions';
 import Home from 'pages/Home';
 import Dashboard from 'pages/Dashboard';
 import Login from 'pages/Auth/Login';
+import Profile from 'pages/Profile';
 import SignUp from 'pages/Auth/SignUp';
 import Main from 'containers/Layouts/Main';
 import Full from 'containers//Layouts/Full';
@@ -23,6 +24,7 @@ export default function App() {
         <Home path="/" />
         <Main path="/app">
           <Dashboard path="dashboard" />
+          <Profile path="profile/:id" />
         </Main>
         <Full path="/auth" className="test">
           <Login path="login" />
