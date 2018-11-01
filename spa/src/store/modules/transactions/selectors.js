@@ -12,7 +12,7 @@ export const getLatestGroupedByDate = createSelector(
     transactions.forEach((item) => {
       const date = item.time.date.split(' ')[0];
       let index = results.length;
-      
+
       if (groups[date] !== undefined) {
         index = groups[date];
       } else {
