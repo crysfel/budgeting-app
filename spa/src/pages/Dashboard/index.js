@@ -70,7 +70,6 @@ function GroupTitle({ group, onClick }) {
 }
 
 function Transaction({ transaction }) {
-  console.log(transaction);
   const css = classNames('flex p-4 pl-6 border-l-4', {
     'border-green': !transaction.isExpense,
     'border-red': transaction.isExpense,
