@@ -4,6 +4,8 @@ import { setCookie, getCookie } from 'utils/cookies';
 import Config from 'config';
 
 export const LOGIN = generateActions('auth/LOGIN');
+export const LOAD_CURRENT_USER = generateActions('auth/LOAD_CURRENT_USER');
+export const SET_TOKEN = 'auth/SET_TOKEN';
 
 /**
  * Request to the server to validate credentials
@@ -42,7 +44,19 @@ export function login(email, password) {
  */
 export function loadCurrentUser() {
   return {
+    types: LOAD_CURRENT_USER,
+    promise: {
+      url: '/users/current',
+    },
+  };
+}
 
+export function setToken(token) {
+  return {
+    type: SET_TOKEN,
+    payload: {
+      token,
+    },
   };
 }
 
@@ -55,7 +69,8 @@ export function bootstrap() {
     const token = getCookie(Config.cookies.token);
     
     if (token) {
-
+      dispatch(setToken(token));
+      dispatch(loadCurrentUser());
     }
   };
 }

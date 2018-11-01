@@ -1,4 +1,4 @@
-import { LOGIN } from './actions';
+import { LOAD_CURRENT_USER, LOGIN, SET_TOKEN } from './actions';
 
 const initialState = {
   /**
@@ -14,11 +14,21 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case LOAD_CURRENT_USER.SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+      };
     case LOGIN.SUCCESS:
       return {
         ...state,
         token: action.payload.token,
         user: action.payload.user,
+      };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload.token,
       };
     default:
       return state;
