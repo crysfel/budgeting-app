@@ -6241,6 +6241,12 @@ table {
 
 /* Your custom CSS here */
 
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

@@ -19,7 +19,7 @@ const mapState = state => ({
 
 export default function Main({ children }) {
   const { isAuthenticated, updated } = useMappedState(mapState);
-  console.log(updated);
+
   if (isAuthenticated) {
     return (
       <div className="h-screen flex flex-col">
@@ -28,7 +28,7 @@ export default function Main({ children }) {
           <NavLink to="/app/transactions/add/expense" label="Add Expense" Icon={ExpenseIcon} />
           <NavLink to="/app/transactions/add/income" label="Add Income" Icon={IncomeIcon} />
         </div>
-        <div className="flex-1 p-4 overflow-auto">
+        <div className={classNames(styles.main, 'flex-1 p-4')}>
           {children}
         </div>
         { updated &&
