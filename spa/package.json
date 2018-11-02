@@ -5,7 +5,7 @@
   "homepage": "https://budget.bleext.com/app",
   "scripts": {
     "start": "npm run watch:css & react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "build": "cross-env NODE_PATH=src npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/theme/base.css -o src/index.css",
@@ -34,6 +34,7 @@
   ],
   "devDependencies": {
     "autoprefixer": "^9.3.1",
+    "cross-env": "^5.2.0",
     "node-sass": "^4.9.4",
     "postcss-cli": "^6.0.1",
     "redux-devtools": "^3.4.1",
