@@ -3,6 +3,8 @@ import { loadCurrentUser, setToken } from '../auth/actions';
 import { getLatestTransactions } from '../transactions/actions';
 import Config from 'config';
 
+export const SET_APP_UPDATED = 'app/SET_APP_UPDATED';
+
 /**
  * Bootstrap the APP!! All initial requirements
  * 
@@ -19,5 +21,14 @@ export function bootstrap() {
       dispatch(loadCurrentUser());
       dispatch(getLatestTransactions());
     }
+  };
+}
+
+/**
+ * Set the updated as true
+ */
+export function setAppUpdated() {
+  return {
+    type: SET_APP_UPDATED,
   };
 }

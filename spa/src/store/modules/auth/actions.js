@@ -34,7 +34,7 @@ export function login(email, password) {
   return (dispatch) => {
     dispatch(postLogin(email, password))
       .then((response) => {
-        setCookie(Config.cookies.token, response.payload.token);
+        setCookie(Config.cookies.token, response.payload.token, 30);
         dispatch(getLatestTransactions());
         navigate('/app/dashboard');
       });

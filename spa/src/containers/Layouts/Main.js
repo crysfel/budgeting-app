@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "@reach/router";
 import { useMappedState } from 'redux-react-hook';
 import classNames from 'classnames';
+import { isAppUpdated } from 'store/modules/app/selectors';
 
 import { ReactComponent as ChartIcon } from 'components/Icon/chart-bar.svg';
 import { ReactComponent as ExpenseIcon } from 'components/Icon/store-front.svg';
@@ -13,11 +14,12 @@ import styles from './Layouts.module.scss';
 
 const mapState = state => ({
   isAuthenticated: !!state.auth.token,
+  updated: isAppUpdated(state),
 })
 
 export default function Main({ children }) {
-  const { isAuthenticated } = useMappedState(mapState);
-
+  const { isAuthenticated, updated } = useMappedState(mapState);
+  console.log(updated);
   if (isAuthenticated) {
     return (
       <div className="h-screen flex flex-col">
@@ -29,6 +31,11 @@ export default function Main({ children }) {
         <div className="flex-1 p-4 overflow-auto">
           {children}
         </div>
+        { updated &&
+          <div className="fixed pin-b py-4 px-8 bg-black text-white" onClick={() => window.location.reload()}>
+            There's a new update, click here to refresh the app!
+          </div>
+        }
       </div>
     );
   }
