@@ -6,7 +6,11 @@ import classNames from 'classnames';
 import { getLatestGroupedByDate } from 'store/modules/transactions/selectors';
 
 import Panel from 'components/Panel';
+import { ReactComponent as IncomeIcon } from 'components/Icon/wallet.svg';
+import { ReactComponent as ExpenseIcon } from 'components/Icon/store-front.svg';
+import { ReactComponent as CurrentIcon } from 'components/Icon/portfolio.svg';
 import ChartImage from './charts.svg';
+import styles from './Dashboard.module.scss';
 
 const today = format(new Date(), 'YYYY-MM-DD');
 const moneyFormatter= new Intl.NumberFormat('en-US', {
@@ -34,6 +38,11 @@ export default function Dashboard() {
   return (
     <Fragment>
       <h1 className="text-grey-darkest mb-8">Dashboard</h1>
+      <div className="md:flex md:flex-row">
+        <StatPanel Icon={IncomeIcon} />
+        <StatPanel Icon={ExpenseIcon} />
+        <StatPanel Icon={CurrentIcon} />
+      </div>
       <Panel title="Latest transactions">
         <ul className="m-0 p-0">
         { latest.map(group => <TransactionGroup key= {group.date} transactions={group} />) }
@@ -60,6 +69,24 @@ function TransactionGroup({ transactions }) {
   );
 }
 
+// Stats
+function StatPanel({ Icon }) {
+  return (
+    <div className={classNames(styles.stat, 'px-4 mb-16 md:flex-1')}>
+      <div className="border-t-4 border-green-light bg-white text-grey-darkest px-8 pt-8">
+        <Icon className={styles.icon} />
+        <h3 className="text-center text-3xl py-4">$4,066</h3>
+      </div>
+      <h4 className="text-center bg-white pt-2">Income</h4>
+      <div className="flex bg-white p-2">
+        <span className="flex-1">$8,120</span>
+        <span className="flex-1 text-right">$52,300</span>
+      </div>
+    </div>
+  );
+}
+
+// Latest transactions
 function GroupTitle({ group, onClick }) {
   const date = parse(group.date);
   const formated = format(date, 'ddd DD, MMM YYYY');
