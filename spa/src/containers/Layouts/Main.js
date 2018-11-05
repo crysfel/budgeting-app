@@ -22,8 +22,8 @@ export default function Main({ children }) {
 
   if (isAuthenticated) {
     return (
-      <div className="h-screen flex flex-col">
-        <div className="bg-orange-light flex">
+      <div className="h-screen w-screen flex flex-col md:flex-row">
+        <div className="bg-orange-light flex md:block">
           <NavLink to="/app/dashboard" label="Dashboard" Icon={ChartIcon} />
           <NavLink to="/app/transactions/add/expense" label="Add Expense" Icon={ExpenseIcon} />
           <NavLink to="/app/transactions/add/income" label="Add Income" Icon={IncomeIcon} />
