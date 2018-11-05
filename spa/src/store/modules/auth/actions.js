@@ -6,6 +6,7 @@ import { getLatestTransactions } from '../transactions/actions';
 
 export const LOGIN = generateActions('auth/LOGIN');
 export const LOAD_CURRENT_USER = generateActions('auth/LOAD_CURRENT_USER');
+export const SIGNUP = generateActions('auth/SIGNUP');
 export const SET_TOKEN = 'auth/SET_TOKEN';
 
 /**
@@ -23,6 +24,41 @@ export function postLogin(email, password) {
         password
       },
     },
+  };
+}
+
+/**
+ * Creates a new user
+ */
+export function postSignup(name, email, password) {
+  return {
+    types: SIGNUP,
+    promise: {
+      url: '/auth/signup',
+      method: 'post',
+      data: {
+        name,
+        email,
+        password
+      },
+    },
+  };
+}
+
+/**
+ * Create a new user, set a cookie with the token
+ * and redirects the user to the dashboard.
+ */
+export function signup(name, email, password) {
+  return (dispatch) => {
+    dispatch(postSignup(name, email, password))
+      .then((response) => {
+        if (response.payload.success) {
+          setCookie(Config.cookies.token, response.payload.token, 30);
+          dispatch(getLatestTransactions());
+          navigate('/app/dashboard');
+        }
+      });
   };
 }
 

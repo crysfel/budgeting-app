@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'redux-react-hook';
 
 import { login as loginAction } from 'store/modules/auth/actions';
 
+import Panel from 'components/Panel';
 import TextField from 'components/TextField';
 import styles from './Login.module.scss';
 
@@ -13,8 +14,7 @@ export default function Login() {
   const login = useCallback(() => dispatch(loginAction(email, password)), [email, password]);
 
   return (
-    <div className="bg-white p-8 border-t-4 border-orange">
-      <h1 className="mb-8">Login</h1>
+    <Panel title="Login">
       <TextField
         type="email"
         label="Email"
@@ -32,6 +32,6 @@ export default function Login() {
         onChange={(event) => setPassword(event.target.value)}
       />
       <button onClick={login} className="py-2 px-4 bg-orange text-white">Submit</button>
-    </div>
+    </Panel>
   );
 }
