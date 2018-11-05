@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { getLatestGroupedByDate } from 'store/modules/transactions/selectors';
 
 import Panel from 'components/Panel';
+import ChartImage from './charts.svg';
 
 const today = format(new Date(), 'YYYY-MM-DD');
 const moneyFormatter= new Intl.NumberFormat('en-US', {
@@ -19,6 +20,16 @@ const mapState = state => ({
 
 export default function Dashboard() {
   const { latest } = useMappedState(mapState);
+
+  if (latest.length === 0) {
+    return (
+      <Fragment>
+        <h1 className="text-grey-darkest mb-8">Dashboard</h1>
+        <img src={ChartImage} alt="Empty Dashboad" className="mt-8 mb-4" />
+        <p className="text-grey-dark">You don't have any transaction yet, start adding some expenses!</p>
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>
