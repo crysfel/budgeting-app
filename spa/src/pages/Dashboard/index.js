@@ -29,8 +29,10 @@ export default function Dashboard() {
     return (
       <Fragment>
         <h1 className="text-grey-darkest mb-8">Dashboard</h1>
-        <img src={ChartImage} alt="Empty Dashboad" className="mt-8 mb-4" />
-        <p className="text-grey-dark">You don't have any transaction yet, start adding some expenses!</p>
+        <div className="max-w-lg mx-auto">
+          <img src={ChartImage} alt="Empty Dashboad" className="my-8" />
+          <p className="text-grey-darker text-center text-xl">You don't have any transaction yet, start adding some expenses!</p>
+        </div>
       </Fragment>
     );
   }
