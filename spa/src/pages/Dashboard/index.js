@@ -55,6 +55,7 @@ export default function Dashboard() {
 }
 
 // Stats
+// TODO: Add it to the dashboard once the API works
 function StatPanel({ color, label, monthly, total, Icon, yearly }) {
   return (
     <div className={classNames(styles.stat, 'md:px-2 mb-16 md:flex-1')}>

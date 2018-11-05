@@ -2,7 +2,7 @@
   "name": "spa",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://budget.bleext.com/app",
+  "homepage": "https://budget.bleext.com/app/",
   "scripts": {
     "start": "npm run watch:css & react-scripts start",
     "build": "cross-env NODE_PATH=src npm run build:css && react-scripts build",

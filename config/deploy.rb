@@ -130,12 +130,12 @@ task :deploy do
     command %[cp "#{fetch(:deploy_to)}/.env" spa/.env]
     command "php artisan migrate"
 
-    comment "Installing the client app"
-    command %{cd spa}
-    command %{nvm use 9.8.0}
-    command %{npm install}
-    command %{npm run build}
-    command %{mv build ../public/app}
+    # comment "Installing the client app"
+    # command %{cd spa}
+    # command %{nvm use 9.8.0}
+    # command %{npm install}
+    # command %{npm run build}
+    # command %{mv build ../public/app}
     
     invoke :'deploy:cleanup'
 
