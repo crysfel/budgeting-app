@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $index = public_path() . '/app/index.html';
+
+    if (\File::exists($index)) {
+        return \File::get($index);
+    }
 });
