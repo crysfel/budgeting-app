@@ -39,9 +39,9 @@ export default function Dashboard() {
     <Fragment>
       <h1 className="text-grey-darkest mb-8">Dashboard</h1>
       <div className="md:flex md:flex-row">
-        <StatPanel Icon={IncomeIcon} />
-        <StatPanel Icon={ExpenseIcon} />
-        <StatPanel Icon={CurrentIcon} />
+        <StatPanel total={4066} label="Income" monthly={5333} yearly={45000} Icon={IncomeIcon} color="border-green-light" />
+        <StatPanel total={2600} label="Expenses" monthly={4210} yearly={32900} Icon={ExpenseIcon} color="border-red-light" />
+        <StatPanel total={1500} label="Current" monthly={1202} yearly={15200} Icon={CurrentIcon} color="border-indigo-lighter" />
       </div>
       <Panel title="Latest transactions">
         <ul className="m-0 p-0">
@@ -52,16 +52,34 @@ export default function Dashboard() {
   );
 }
 
+// Stats
+function StatPanel({ color, label, monthly, total, Icon, yearly }) {
+  return (
+    <div className={classNames(styles.stat, 'md:px-2 mb-16 md:flex-1')}>
+      <div className={classNames(color, 'border-t-4 bg-white text-grey-darkest px-8 pt-8')}>
+        <Icon className={styles.icon} />
+        <h3 className="text-center text-3xl py-4">{moneyFormatter.format(total)}</h3>
+      </div>
+      <h4 className="text-center bg-white pt-2">{label}</h4>
+      <div className="flex bg-white p-2 pb-4">
+        <span className="flex-1 px-2">{moneyFormatter.format(monthly)}</span>
+        <span className="flex-1 px-2 text-right">{moneyFormatter.format(yearly)}</span>
+      </div>
+    </div>
+  );
+}
+
+// Latest transactions
 function TransactionGroup({ transactions }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <li className="list-reset">
       <GroupTitle group={transactions} onClick={() => setExpanded(!expanded)} />
-      { expanded &&
+      {expanded &&
         <Fragment>
-          {transactions.items.map(transaction => 
-            <Transaction key={transaction.id} transaction={transaction}/>
+          {transactions.items.map(transaction =>
+            <Transaction key={transaction.id} transaction={transaction} />
           )}
         </Fragment>
       }
@@ -69,24 +87,6 @@ function TransactionGroup({ transactions }) {
   );
 }
 
-// Stats
-function StatPanel({ Icon }) {
-  return (
-    <div className={classNames(styles.stat, 'px-4 mb-16 md:flex-1')}>
-      <div className="border-t-4 border-green-light bg-white text-grey-darkest px-8 pt-8">
-        <Icon className={styles.icon} />
-        <h3 className="text-center text-3xl py-4">$4,066</h3>
-      </div>
-      <h4 className="text-center bg-white pt-2">Income</h4>
-      <div className="flex bg-white p-2">
-        <span className="flex-1">$8,120</span>
-        <span className="flex-1 text-right">$52,300</span>
-      </div>
-    </div>
-  );
-}
-
-// Latest transactions
 function GroupTitle({ group, onClick }) {
   const date = parse(group.date);
   const formated = format(date, 'ddd DD, MMM YYYY');
