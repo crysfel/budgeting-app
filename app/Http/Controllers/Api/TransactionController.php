@@ -56,25 +56,36 @@ class TransactionController extends Controller
   }
 
   /**
-   * Display the specified resource.
+   * Display the totals for income and transaction
+   * for the current month.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show(Request $request, $id)
+  public function totals(Request $request)
   {
-    // $user = $this->guard()->user();
-
-    // if ($user->can('view', $post)) {
-      return response()->json([
-        'success'   => true,
-      ]);
-    // }
-
-    // return response()->json([
-    //   'success'   => false,
-    //   'errors'    => ['You are not the author of this post.']
-    // ], 403);
+    $user = $this->guard()->user();
+    $now = new Carbon();
+    
+    $options = [
+      'user_id' => $user->id,
+      'from' => $now->year.'-'.$now->month.'-01',
+      'to' => $now->year.'-'.$now->month.'-'.$now->day,
+    ];
+    $income = Transaction::income($options)->first();
+    Log::info(Transaction::income($options)->toSql());
+    Log::info($options);
+    Log::info($income);
+    return response()->json([
+      'success'   => true,
+      'totals'    => [
+        'income'  => [
+          'total' => $income->total,
+        ],
+        'expense'  => [],
+        'current'  => [],
+      ]
+    ]);
   }
 
   /**

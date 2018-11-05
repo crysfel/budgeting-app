@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cartalyst\Tags\TaggableTrait;
 use Cartalyst\Tags\TaggableInterface;
+use Illuminate\Support\Facades\DB;
+use Log;
 
 class Transaction extends Model implements TaggableInterface
 {
@@ -57,5 +59,18 @@ class Transaction extends Model implements TaggableInterface
         }
 
         return $result->orderBy('created_at', 'DESC');
+    }
+
+    /**
+     * Returns the total income between two dates
+     *  - from: The date from
+     *  - to: The date limit
+     *  - user_id: The user to calculate the income from
+     */
+    public function scopeIncome($query, $options) {
+        return $query->select(DB::raw('sum(`transactions`.`amount`) as total'))
+                    ->where('transactions.is_expense', false)
+                    ->where('transactions.user_id', $options['user_id'])
+                    ->whereBetween('transactions.created_at', array('"'.$options['from'].'"', '"'.$options['to'].'"'));
     }
 }

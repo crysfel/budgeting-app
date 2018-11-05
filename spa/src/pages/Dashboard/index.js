@@ -38,11 +38,11 @@ export default function Dashboard() {
   return (
     <Fragment>
       <h1 className="text-grey-darkest mb-8">Dashboard</h1>
-      <div className="md:flex md:flex-row">
+      {/* <div className="md:flex md:flex-row">
         <StatPanel total={4066} label="Income" monthly={5333} yearly={45000} Icon={IncomeIcon} color="border-green-light" />
         <StatPanel total={2600} label="Expenses" monthly={4210} yearly={32900} Icon={ExpenseIcon} color="border-red-light" />
         <StatPanel total={1500} label="Current" monthly={1202} yearly={15200} Icon={CurrentIcon} color="border-indigo-lighter" />
-      </div>
+      </div> */}
       <Panel title="Latest transactions">
         <ul className="m-0 p-0">
         { latest.map(group => <TransactionGroup key= {group.date} transactions={group} />) }
@@ -62,8 +62,8 @@ function StatPanel({ color, label, monthly, total, Icon, yearly }) {
       </div>
       <h4 className="text-center bg-white pt-2">{label}</h4>
       <div className="flex bg-white p-2 pb-4">
-        <span className="flex-1 px-2">{moneyFormatter.format(monthly)}</span>
-        <span className="flex-1 px-2 text-right">{moneyFormatter.format(yearly)}</span>
+        <span className="flex-1 px-2 text-grey-dark">{moneyFormatter.format(monthly)}</span>
+        <span className="flex-1 px-2 text-grey-dark text-right">{moneyFormatter.format(yearly)}</span>
       </div>
     </div>
   );

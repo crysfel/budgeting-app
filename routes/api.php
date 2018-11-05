@@ -28,6 +28,7 @@ Route::group(['middleware' => 'cors'], function () {
             Route::get('users/{user_id}/unfollow', 'Api\FollowerController@unfollow');
 
             Route::get('transactions', 'Api\TransactionController@index');
+            Route::get('transactions/totals', 'Api\TransactionController@totals');
             Route::post('transactions', 'Api\TransactionController@store');
             Route::put('transactions/{id}', 'Api\TransactionController@update');
             Route::delete('transactions/{id}', 'Api\TransactionController@destroy');

@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'redux-react-hook';
+import { Link } from '@reach/router';
 
 import { signup as signupAction } from 'store/modules/auth/actions';
 
+import Button from 'components/Button';
 import Panel from 'components/Panel';
 import TextField from 'components/TextField';
 import styles from './Login.module.scss';
@@ -39,7 +41,8 @@ export default function SignUp() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button onClick={signup} className="py-2 px-4 bg-orange text-white">Submit</button>
+      <Button onClick={signup}>Submit</Button>
+      <p className="mt-4 text-grey-darker">Already a member? <Link to="/auth/login" className="text-orange">Login</Link></p>
     </Panel>
   );
 }
