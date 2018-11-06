@@ -1,3 +1,11 @@
+# Budgeting App
+I created this projects to try our the new React Hooks API! I wanted to create a production ready app that I can use to track my expenses.
+
+I've written a tutorial on [how to use redux with hooks](https://medium.com/@crysfel/using-hooks-with-redux-tailwind-70a844736d56), I'm using this project as an example.
+
+
+You can see the app running at: https://budget.bleext.com/ I'm going to keep adding more features over time, given that I'm actually using it to track my expenses 👌
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
