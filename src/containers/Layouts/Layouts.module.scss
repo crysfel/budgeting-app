@@ -1,0 +1,14 @@
+
+.navIcon {
+  display: block;
+  fill: currentColor;
+  height: 25px;
+  margin: 0 auto;
+  width: 25px;
+}
+
+.main {
+  // width: 100vw;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}

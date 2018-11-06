@@ -1,0 +1,9 @@
+@tailwind preflight;
+@tailwind utilities;
+
+/* Your custom CSS here */
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
