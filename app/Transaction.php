@@ -62,15 +62,22 @@ class Transaction extends Model implements TaggableInterface
     }
 
     /**
-     * Returns the total income between two dates
+     * Returns the total income/expense between two dates
      *  - from: The date from
      *  - to: The date limit
      *  - user_id: The user to calculate the income from
+     *  - is_expense: Whether to return expenses or income, defaults to false
      */
-    public function scopeIncome($query, $options) {
-        return $query->select(DB::raw('sum(`transactions`.`amount`) as total'))
-                    ->where('transactions.is_expense', false)
+    public function scopeTotal($query, $options) {
+        $isExpense = true;
+
+        if (isset($options['is_expense'])) {
+            $isExpense = $options['is_expense'];
+        }
+
+        return $query->select(DB::raw('sum(transactions.amount) as total'))
+                    ->where('transactions.is_expense', $isExpense)
                     ->where('transactions.user_id', $options['user_id'])
-                    ->whereBetween('transactions.created_at', array('"'.$options['from'].'"', '"'.$options['to'].'"'));
+                    ->whereBetween('transactions.created_at', [$options['from'], $options['to']]);
     }
 }

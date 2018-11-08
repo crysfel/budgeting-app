@@ -66,24 +66,35 @@ class TransactionController extends Controller
   {
     $user = $this->guard()->user();
     $now = new Carbon();
+    $from = $now->year.'-'.$now->month.'-01';
+    $to = $now->year.'-'.$now->month.'-'.$now->day;
     
-    $options = [
+    $income = Transaction::total([
       'user_id' => $user->id,
-      'from' => $now->year.'-'.$now->month.'-01',
-      'to' => $now->year.'-'.$now->month.'-'.$now->day,
-    ];
-    $income = Transaction::income($options)->first();
-    Log::info(Transaction::income($options)->toSql());
-    Log::info($options);
-    Log::info($income);
+      'from' => $from,
+      'to' => $to,
+      'is_expense' => false,
+    ])->first();
+
+    $expsense = Transaction::total([
+      'user_id' => $user->id,
+      'from' => $from,
+      'to' => $to,
+      'is_expense' => true,
+    ])->first();
+    
     return response()->json([
       'success'   => true,
       'totals'    => [
         'income'  => [
           'total' => $income->total,
         ],
-        'expense'  => [],
-        'current'  => [],
+        'expense'  => [
+          'total' => $expsense->total,
+        ],
+        'current'  => [
+          'total' => round($income->total - $expsense->total, 2),
+        ],
       ]
     ]);
   }
