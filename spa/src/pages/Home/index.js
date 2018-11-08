@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
 
 import Illustration from './savings.svg';

@@ -2,6 +2,8 @@ import { createSelector } from 'reselect'
 
 export const getLatestTransactions = state => state.transactions.latest;
 
+export const getTotals = state => state.transactions.totals;
+
 export const getLatestGroupedByDate = createSelector(
   getLatestTransactions,
   (transactions) => {

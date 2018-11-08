@@ -1,6 +1,6 @@
 import { getCookie } from 'utils/cookies';
 import { loadCurrentUser, setToken } from '../auth/actions';
-import { getLatestTransactions } from '../transactions/actions';
+import { getLatestTransactions, getTotals } from '../transactions/actions';
 import Config from 'config';
 
 export const SET_APP_UPDATED = 'app/SET_APP_UPDATED';
@@ -20,6 +20,7 @@ export function bootstrap() {
       dispatch(setToken(token));
       dispatch(loadCurrentUser());
       dispatch(getLatestTransactions());
+      dispatch(getTotals());
     }
   };
 }

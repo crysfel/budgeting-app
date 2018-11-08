@@ -1,6 +1,7 @@
 import generateActions from 'utils/actions';
 
 export const GET_LATEST_TRANSACTIONS = generateActions('transactions/GET_LATEST_TRANSACTIONS');
+export const GET_TOTALS = generateActions('transactions/GET_TOTALS');
 export const SAVE_TRANSACTION = generateActions('transactions/SAVE_TRANSACTION');
 
 /**
@@ -26,6 +27,18 @@ export function getLatestTransactions() {
     types: GET_LATEST_TRANSACTIONS,
     promise: {
       url: '/transactions',
+    },
+  };
+}
+
+/**
+ * Get the current's months totals
+ */
+export function getTotals() {
+  return {
+    types: GET_TOTALS,
+    promise: {
+      url: '/transactions/totals',
     },
   };
 }
