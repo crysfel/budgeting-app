@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { useMappedState } from 'redux-react-hook';
+import { navigate } from '@reach/router';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
 import classNames from 'classnames';
 import { getLatestGroupedByDate } from 'store/modules/transactions/selectors';
 
+import Button from 'components/Button';
 import Panel from 'components/Panel';
 import { ReactComponent as IncomeIcon } from 'components/Icon/wallet.svg';
 import { ReactComponent as ExpenseIcon } from 'components/Icon/store-front.svg';
@@ -31,7 +33,8 @@ export default function Dashboard() {
         <h1 className="text-grey-darkest mb-8">Dashboard</h1>
         <div className="max-w-lg mx-auto">
           <img src={ChartImage} alt="Empty Dashboad" className="my-8" />
-          <p className="text-grey-darker text-center text-xl">You don't have any transaction yet, start adding some expenses!</p>
+          <p className="text-grey-darker text-center text-xl mb-8">You don't have any transaction yet, start adding some expenses!</p>
+          <p className="text-center "><Button onClick={() => navigate('/app/transactions/add/expense')}>Add Expense</Button></p>
         </div>
       </Fragment>
     );
