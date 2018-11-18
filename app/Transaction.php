@@ -80,4 +80,29 @@ class Transaction extends Model implements TaggableInterface
                     ->where('transactions.user_id', $options['user_id'])
                     ->whereBetween('transactions.created_at', [$options['from'], $options['to']]);
     }
+
+    /**
+     * Returns the total income/expense between two dates grouped by
+     * year, month or day.
+     *  - from: The date from
+     *  - to: The date limit
+     *  - user_id: The user to calculate the income from
+     *  - grouped: day, month, year. The group type
+     */
+    public function scopeTotalGrouped($query, $options) {
+        $isExpense = true;
+
+        if (isset($options['is_expense'])) {
+            $isExpense = $options['is_expense'];
+        }
+
+        return $query->select(DB::raw('
+                        YEAR(transactions.created_at) as grouped_year, MONTH(transactions.created_at) as grouped_month, DAY(transactions.created_at) as grouped_day,
+                        sum(transactions.amount) as total
+                    '))
+                    ->where('transactions.is_expense', $isExpense)
+                    ->where('transactions.user_id', $options['user_id'])
+                    ->whereBetween('transactions.created_at', [$options['from'], $options['to']])
+                    ->groupBy(DB::raw('YEAR(transactions.created_at)'), DB::raw('MONTH(transactions.created_at)'), DB::raw('DAY(transactions.created_at)'));
+    }
 }
