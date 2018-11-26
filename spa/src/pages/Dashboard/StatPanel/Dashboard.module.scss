@@ -1,0 +1,23 @@
+
+.icon {
+  display: block;
+  fill: currentColor;
+  height: 30px;
+  margin: 0 auto;
+  width: 30px;
+}
+
+@media (min-width: 768px) {
+  .stat:first-child {
+    padding-left: 0;
+  }
+
+  .stat:last-child {
+    padding-right: 0;
+  }
+
+  .icon {
+    height: 70px;
+    width: 70px;
+  }
+}
