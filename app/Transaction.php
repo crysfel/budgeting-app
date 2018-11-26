@@ -127,7 +127,7 @@ class Transaction extends Model implements TaggableInterface
                     ->where('transactions.is_expense', $isExpense)
                     ->where('transactions.user_id', $options['user_id'])
                     ->whereBetween('transactions.created_at', [$options['from'], $options['to']])
-                    ->groupBy('tags.id')
+                    ->groupBy('tags.id', 'tags.name')
                     ->orderBy('total', 'desc');
     }
 }
