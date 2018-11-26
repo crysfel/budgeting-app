@@ -3,6 +3,7 @@ import generateActions from 'utils/actions';
 export const GET_LATEST_TRANSACTIONS = generateActions('transactions/GET_LATEST_TRANSACTIONS');
 export const GET_TOTALS = generateActions('transactions/GET_TOTALS');
 export const GET_TOTALS_BY_DAY = generateActions('transactions/GET_TOTALS_BY_DAY');
+export const GET_TOTALS_BY_TAGS = generateActions('transactions/GET_TOTALS_BY_TAGS');
 export const SAVE_TRANSACTION = generateActions('transactions/SAVE_TRANSACTION');
 
 /**
@@ -52,6 +53,18 @@ export function getTotalsByDay() {
     types: GET_TOTALS_BY_DAY,
     promise: {
       url: '/dashboard/grouped',
+    },
+  };
+}
+
+/**
+ * Get the current's months totals
+ */
+export function getTotalsByTags() {
+  return {
+    types: GET_TOTALS_BY_TAGS,
+    promise: {
+      url: '/dashboard/categories',
     },
   };
 }

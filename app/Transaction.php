@@ -105,4 +105,29 @@ class Transaction extends Model implements TaggableInterface
                     ->whereBetween('transactions.created_at', [$options['from'], $options['to']])
                     ->groupBy(DB::raw('YEAR(transactions.created_at)'), DB::raw('MONTH(transactions.created_at)'), DB::raw('DAY(transactions.created_at)'));
     }
+
+    /**
+     * Returns the total income/expense between two dates grouped by tags
+     *  - from: The date from
+     *  - to: The date limit
+     *  - user_id: The user to calculate the income from
+     *  - is_expense: true | false
+     */
+    public function scopeTotalTags($query, $options) {
+        $isExpense = true;
+
+        if (isset($options['is_expense'])) {
+            $isExpense = $options['is_expense'];
+        }
+
+        return $query->select(DB::raw('tags.id, tags.name, SUM(transactions.amount) as total'))
+                    ->from('tags')
+                    ->join('tagged', 'tags.id', 'tagged.tag_id')
+                    ->join('transactions', 'transactions.id', 'tagged.taggable_id')
+                    ->where('transactions.is_expense', $isExpense)
+                    ->where('transactions.user_id', $options['user_id'])
+                    ->whereBetween('transactions.created_at', [$options['from'], $options['to']])
+                    ->groupBy('tags.id')
+                    ->orderBy('total', 'desc');
+    }
 }

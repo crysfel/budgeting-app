@@ -65,4 +65,35 @@ class DashboardController extends Controller
       'income' => $income,
     ]);
   }
+
+  /**
+   * Returns all expenses totals by categories
+   */
+  public function categories(Request $request) {
+    $user = $this->guard()->user();
+    $grouped = 'day';
+    $now = new Carbon();
+    $from = $now->year.'-'.$now->month.'-01 00:00:00';
+    $to = $now->year.'-'.$now->month.'-'.$now->day.' 23:59:59';
+
+    $expenses = Transaction::totalTags([
+      'user_id' => $user->id,
+      'from' => $from,
+      'to' => $to,
+      'is_expense' => true,
+    ])->get();
+
+    $income = Transaction::totalTags([
+      'user_id' => $user->id,
+      'from' => $from,
+      'to' => $to,
+      'is_expense' => false,
+    ])->get();;
+
+    return response()->json([
+      'success'   => true,
+      'expenses' => $expenses,
+      'income' => $income,
+    ]);
+  }
 }

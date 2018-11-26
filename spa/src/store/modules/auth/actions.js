@@ -2,7 +2,7 @@ import generateActions from 'utils/actions';
 import { navigate } from '@reach/router';
 import { setCookie } from 'utils/cookies';
 import Config from 'config';
-import { getLatestTransactions, getTotals, getTotalsByDay } from '../transactions/actions';
+import { getLatestTransactions, getTotals, getTotalsByDay, getTotalsByTags } from '../transactions/actions';
 
 export const LOGIN = generateActions('auth/LOGIN');
 export const LOAD_CURRENT_USER = generateActions('auth/LOAD_CURRENT_USER');
@@ -75,6 +75,7 @@ export function login(email, password) {
         dispatch(getLatestTransactions());
         dispatch(getTotals());
         dispatch(getTotalsByDay());
+        dispatch(getTotalsByTags());
         navigate('/app/dashboard');
       });
   };
