@@ -9,6 +9,8 @@ export const getTotals = state => state.transactions.totals;
 
 export const getGrouped = state => state.transactions.grouped;
 
+export const getTags = state => state.transactions.tags;
+
 // Group the latest transactions by date
 export const getLatestGroupedByDate = createSelector(
   getLatestTransactions,

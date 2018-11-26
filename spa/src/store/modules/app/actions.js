@@ -1,6 +1,6 @@
 import { getCookie } from 'utils/cookies';
 import { loadCurrentUser, setToken } from '../auth/actions';
-import { getLatestTransactions, getTotals, getTotalsByDay } from '../transactions/actions';
+import { getLatestTransactions, getTotals, getTotalsByDay, getTotalsByTags } from '../transactions/actions';
 import Config from 'config';
 
 export const SET_APP_UPDATED = 'app/SET_APP_UPDATED';
@@ -22,6 +22,7 @@ export function bootstrap() {
       dispatch(getLatestTransactions());
       dispatch(getTotals());
       dispatch(getTotalsByDay());
+      dispatch(getTotalsByTags());
     }
   };
 }
