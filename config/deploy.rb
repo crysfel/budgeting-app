@@ -45,6 +45,10 @@ task :environment do
   # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
 
   invoke :'nvm:load'
+
+
+  comment "source #{fetch(:deploy_to)}/.node_env"
+  command %{source #{fetch(:deploy_to)}/.node_env}
 end
 
 namespace :nvm do
@@ -128,14 +132,16 @@ task :deploy do
     comment "cp #{fetch(:deploy_to)}/.env .env"
     command %[cp "#{fetch(:deploy_to)}/.env" .env]
     command %[cp "#{fetch(:deploy_to)}/.env" spa/.env]
+    comment "cp #{fetch(:deploy_to)}/.node_env .node_env"
+    command %[cp "#{fetch(:deploy_to)}/.node_env" spa/.node_env]
     command "php artisan migrate"
 
-    # comment "Installing the client app"
-    # command %{cd spa}
-    # command %{nvm use 9.8.0}
-    # command %{npm install}
-    # command %{npm run build}
-    # command %{mv build ../public/app}
+    comment "Installing the client app"
+    command %{cd spa}
+    command %{nvm use 9.8.0}
+    command %{npm install}
+    command %{npm run build}
+    command %{mv build ../public/app}
     
     invoke :'deploy:cleanup'
 

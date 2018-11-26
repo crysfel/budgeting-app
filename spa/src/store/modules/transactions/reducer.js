@@ -1,4 +1,4 @@
-import { GET_LATEST_TRANSACTIONS, GET_TOTALS } from './actions';
+import { GET_LATEST_TRANSACTIONS, GET_TOTALS, GET_TOTALS_BY_DAY } from './actions';
 
 const initialState = {
   /**
@@ -14,6 +14,14 @@ const initialState = {
     expense: {},
     current: {},
   },
+
+  /**
+   * Totals grouped by day
+   */
+  grouped: {
+    expenses: [],
+    income: [],
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,6 +30,14 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         latest: action.payload.transactions,
+      };
+    case GET_TOTALS_BY_DAY.SUCCESS:
+      return {
+        ...state,
+        grouped: {
+          expenses: action.payload.expenses,
+          income: action.payload.income,
+        },
       };
     case GET_TOTALS.SUCCESS:
       return {

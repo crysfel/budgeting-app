@@ -44,18 +44,25 @@ class DashboardController extends Controller
       $grouped = $request->input('grouped');
     }
 
-    $options = [
+    $expenses = Transaction::totalGrouped([
       'user_id' => $user->id,
       'grouped' => $grouped,
       'from' => $from,
       'to' => $to,
-    ];
-
-    $expenses = Transaction::totalGrouped($options)->get();
+      'is_expense' => true,
+    ])->get();
+    $income = Transaction::totalGrouped([
+      'user_id' => $user->id,
+      'grouped' => $grouped,
+      'from' => $from,
+      'to' => $to,
+      'is_expense' => false,
+    ])->get();
 
     return response()->json([
       'success'   => true,
       'expenses' => $expenses,
+      'income' => $income,
     ]);
   }
 }

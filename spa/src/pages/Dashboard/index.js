@@ -4,10 +4,11 @@ import { navigate } from '@reach/router';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
 import classNames from 'classnames';
-import { getLatestGroupedByDate, getTotals } from 'store/modules/transactions/selectors';
+import { getLatestGroupedByDate, getTotals, getOverviewData } from 'store/modules/transactions/selectors';
 
 import Button from 'components/Button';
 import Panel from 'components/Panel';
+import OverviewChart from './OverviewChart';
 import { ReactComponent as IncomeIcon } from 'components/Icon/wallet.svg';
 import { ReactComponent as ExpenseIcon } from 'components/Icon/store-front.svg';
 import { ReactComponent as CurrentIcon } from 'components/Icon/portfolio.svg';
@@ -23,10 +24,11 @@ const moneyFormatter= new Intl.NumberFormat('en-US', {
 const mapState = state => ({
   latest: getLatestGroupedByDate(state),
   totals: getTotals(state),
+  overview: getOverviewData(state),
 });
 
 export default function Dashboard() {
-  const { latest, totals } = useMappedState(mapState);
+  const { latest, totals, overview } = useMappedState(mapState);
 
   if (latest.length === 0) {
     return (
@@ -49,6 +51,11 @@ export default function Dashboard() {
         <StatPanel total={totals.expense.total} label="Expenses" monthly={4210} yearly={32900} Icon={ExpenseIcon} color="border-red-light" />
         <StatPanel total={totals.current.total} label="Current" monthly={1202} yearly={15200} Icon={CurrentIcon} color="border-indigo-lighter" />
       </div>
+      <Panel title="Overview" className="mb-16 pb-16">
+        <OverviewChart
+          data={overview}
+        />
+      </Panel>
       <Panel title="Latest transactions">
         <ul className="m-0 p-0">
         { latest.map(group => <TransactionGroup key= {group.date} transactions={group} />) }

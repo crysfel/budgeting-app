@@ -1,9 +1,15 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
+import getDaysInMonth from 'date-fns/get_days_in_month';
+
+const today = new Date();
 
 export const getLatestTransactions = state => state.transactions.latest;
 
 export const getTotals = state => state.transactions.totals;
 
+export const getGrouped = state => state.transactions.grouped;
+
+// Group the latest transactions by date
 export const getLatestGroupedByDate = createSelector(
   getLatestTransactions,
   (transactions) => {
@@ -38,5 +44,44 @@ export const getLatestGroupedByDate = createSelector(
         return sum + item.amount;
       }, 0),
     }));
+  }
+);
+
+// Generates the data for the overview chart
+export const getOverviewData = createSelector(
+  getGrouped,
+  (grouped) => {
+    const income = [];
+    const expenses = [];
+    const current = [];
+    const days = getDaysInMonth(today);
+    let result = 0;
+    
+    for (let i = 1; i <= days; i++) {
+      const incomeDay = grouped.income.find(item => item.grouped_day === i);
+      const expenseDay = grouped.expenses.find(item => item.grouped_day === i);
+
+      if (incomeDay) {
+        income.push({ x: i, y: incomeDay.total });
+        result += incomeDay.total;
+      } else {
+        income.push({ x: i, y: 0 });
+      }
+
+      if (expenseDay) {
+        expenses.push({ x: i, y: expenseDay.total });
+        result -= expenseDay.total;
+      } else {
+        expenses.push({ x: i, y: 0 });
+      }
+      
+      current.push({ x: i, y: result });
+    }
+
+    return {
+      income,
+      expenses,
+      current,
+    };
   }
 );
