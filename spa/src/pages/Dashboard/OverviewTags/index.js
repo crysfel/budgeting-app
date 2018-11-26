@@ -23,7 +23,7 @@ function Tag({ data, total }) {
   const percentage = Math.ceil((data.total / total ) * 100);
 
   return (
-    <div className="relative mb-4">
+    <div className="relative mb-4" title={`${percentage}% of total spending`}>
       <div className="flex p-4 z-10 relative">
         <div className="flex-1 capitalize">{data.name}</div>
         <span>{moneyFormatter.format(data.total)}</span>
