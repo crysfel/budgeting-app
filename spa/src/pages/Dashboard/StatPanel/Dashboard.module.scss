@@ -7,15 +7,15 @@
   width: 30px;
 }
 
+.stat:first-child {
+  padding-left: 0;
+}
+
+.stat:last-child {
+  padding-right: 0;
+}
+
 @media (min-width: 768px) {
-  .stat:first-child {
-    padding-left: 0;
-  }
-
-  .stat:last-child {
-    padding-right: 0;
-  }
-
   .icon {
     height: 70px;
     width: 70px;
