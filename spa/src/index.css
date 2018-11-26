@@ -6240,6 +6240,7 @@ table {
 }
 
 /* Your custom CSS here */
+@import "~react-vis/dist/style.css";
 
 html,
 body {
