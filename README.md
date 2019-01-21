@@ -46,13 +46,13 @@ $ yarn start
 The SPA uses Create React App!
 
 ## Features
-- [x] Sign up with email
-- [x] Login with email
-- [x] Login with Facebook
-- [x] Geolocalization based on IP
-- [x] Activity system
-- [x] Comment system
-- [x] Simple blog
-- [x] Social system to follow other users
-- [ ] Tag system
-- [ ] Assets uploading system
+[x] Sign up with email
+[x] Login with email
+[x] Login with Facebook
+[x] Geolocalization based on IP
+[x] Activity system
+[x] Comment system
+[x] Simple blog
+[x] Social system to follow other users
+[x] Tag system
+[ ] Assets uploading system
