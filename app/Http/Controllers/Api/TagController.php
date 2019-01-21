@@ -40,7 +40,7 @@ class TagController extends Controller
     return response()->json([
       'success'   => true,
       'meta'      => [
-        'total' => 10,
+        'total' => count($tags),
       ],
       'tags'     => $tags,
     ]);

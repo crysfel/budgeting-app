@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Tag extends Model
 {
@@ -42,12 +43,12 @@ class Tag extends Model
      * Returns popular tags for the given author in the given namespace
      */
     public function scopePopularByAuthor($query, $author_id, $namespace) {
-      return $query->select(DB::raw('select tags.id, tags.slug, tags.name, tags.namespace, count(tagged.tag_id) as count'))
+      return $query->select(DB::raw('tags.id, tags.slug, tags.name, tags.namespace, count(tagged.tag_id) as total'))
                   ->join('tagged', 'tagged.tag_id', '=', 'tags.id')
                   ->join('transactions', 'transactions.id', '=', 'tagged.taggable_id')
                   ->where('tagged.taggable_type', $namespace)
                   ->where('transactions.user_id', $author_id)
                   ->groupBy('tagged.tag_id')
-                  ->orderBy('count DESC');
+                  ->orderBy('total', 'desc');
     }
 }
