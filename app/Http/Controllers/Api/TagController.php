@@ -34,7 +34,8 @@ class TagController extends Controller
    */
   public function popular(Request $request)
   {
-    $tags = Tag::popular($request->input('namespace'))->get();
+    $user = $this->guard()->user();
+    $tags = Tag::popularByAuthor($user->id, $request->input('namespace'))->get();
 
     return response()->json([
       'success'   => true,
