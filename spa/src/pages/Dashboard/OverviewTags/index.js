@@ -13,7 +13,7 @@ export default function OverviewTags({ tags, totals }) {
   const { total } = totals.expense;
 
   return (
-    <Panel title="Tags">
+    <Panel title="Tags" className="mb-8">
       {expenses.map((tag) => <Tag key={tag.id} data={tag} total={total} />)}
     </Panel>
   );

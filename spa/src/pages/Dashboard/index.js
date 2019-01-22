@@ -52,10 +52,10 @@ export default function Dashboard() {
       </Panel>
       <div className="md:flex">
         <div className="md:flex-1 md:mr-4">
-          <LatestTransactions transactions={latest} />
+          <OverviewTags tags={tags} totals={totals} />
         </div>
         <div className="md:flex-1 md:ml-4">
-          <OverviewTags tags={tags} totals={totals} />
+          <LatestTransactions transactions={latest} />
         </div>
       </div>
     </Fragment>
