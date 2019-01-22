@@ -48,7 +48,7 @@ class Tag extends Model
                   ->join('transactions', 'transactions.id', '=', 'tagged.taggable_id')
                   ->where('tagged.taggable_type', $namespace)
                   ->where('transactions.user_id', $author_id)
-                  ->groupBy('tagged.tag_id')
+                  ->groupBy('tags.id', 'tags.slug', 'tags.name', 'tags.namespace','tagged.tag_id')
                   ->orderBy('total', 'desc');
     }
 }

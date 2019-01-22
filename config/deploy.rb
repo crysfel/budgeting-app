@@ -138,10 +138,12 @@ task :deploy do
 
     comment "Installing the client app"
     command %{source ~/.nvm/nvm.sh}
+    comment "source #{fetch(:deploy_to)}/.node_env"
+    command %{source #{fetch(:deploy_to)}/.node_env}
     command %{cd spa}
-    command %{nvm use 9.8.0}
-    command %{npm install}
-    command %{npm run build}
+    command %{nvm use 10.15.0}
+    command %{yarn install}
+    command %{yarn build}
     command %{mv build ../public/app}
     
     invoke :'deploy:cleanup'
