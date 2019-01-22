@@ -137,6 +137,7 @@ task :deploy do
     command "php artisan migrate"
 
     comment "Installing the client app"
+    command %{source ~/.nvm/nvm.sh}
     command %{cd spa}
     command %{nvm use 9.8.0}
     command %{npm install}
