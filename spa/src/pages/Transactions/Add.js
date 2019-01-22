@@ -78,7 +78,7 @@ export default function AddTransaction({ isExpense }) {
       <Panel>
         <TextField label="Amount" placeholder="00.00" value={state.amount} onChange={(event) => setValue(event, 'amount')} type="number" />
         <TextField label="Tags" placeholder={tagsPlaceholder} value={state.tags} onChange={(event) => setValue(event, 'tags')} />
-        <div className="mb-4">
+        <div className="mb-4 overflow-auto" style={{ maxHeight: '90px' }}>
           {
             tags.popular.map(tag => <Tag key={tag.slug} tag={tag} selections={state.tags} onPress={addOrRemoveTag} />)
           }
