@@ -1,6 +1,7 @@
 import generateActions from 'utils/actions';
 
 export const GET_LATEST_TRANSACTIONS = generateActions('transactions/GET_LATEST_TRANSACTIONS');
+export const GET_POPULAR_TAGS = generateActions('transactions/GET_POPULAR_TAGS');
 export const GET_TOTALS = generateActions('transactions/GET_TOTALS');
 export const GET_TOTALS_BY_DAY = generateActions('transactions/GET_TOTALS_BY_DAY');
 export const GET_TOTALS_BY_TAGS = generateActions('transactions/GET_TOTALS_BY_TAGS');
@@ -65,6 +66,19 @@ export function getTotalsByTags() {
     types: GET_TOTALS_BY_TAGS,
     promise: {
       url: '/dashboard/categories',
+    },
+  };
+}
+
+/**
+ * Get the most used tags for the current user
+ */
+export function getPopularTags() {
+  return {
+    types: GET_POPULAR_TAGS,
+    promise: {
+      url: '/tags/popular',
+      data: { namespace: 'App\\Transaction' },
     },
   };
 }

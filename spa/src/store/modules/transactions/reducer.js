@@ -1,4 +1,4 @@
-import { GET_LATEST_TRANSACTIONS, GET_TOTALS, GET_TOTALS_BY_DAY, GET_TOTALS_BY_TAGS } from './actions';
+import { GET_LATEST_TRANSACTIONS, GET_TOTALS, GET_TOTALS_BY_DAY, GET_TOTALS_BY_TAGS, GET_POPULAR_TAGS } from './actions';
 
 const initialState = {
   /**
@@ -29,6 +29,7 @@ const initialState = {
   tags: {
     expenses: [],
     income: [],
+    popular: [],
   },
 };
 
@@ -56,8 +57,17 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         tags: {
+          ...state.tags,
           expenses: action.payload.expenses,
           income: action.payload.income,
+        },
+      };
+    case GET_POPULAR_TAGS.SUCCESS:
+      return {
+        ...state,
+        tags: {
+          ...state.tags,
+          popular: action.payload.tags,
         },
       };
     default:
