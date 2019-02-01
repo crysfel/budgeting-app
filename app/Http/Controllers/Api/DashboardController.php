@@ -36,7 +36,7 @@ class DashboardController extends Controller
   {
     $user = $this->guard()->user();
     $grouped = 'day';
-    $now = new Carbon();
+    $now = Carbon::now('UTC');
     $from = $now->year.'-'.$now->month.'-01 00:00:00';
     $to = $now->year.'-'.$now->month.'-'.$now->day.' 23:59:59';
 
@@ -72,7 +72,7 @@ class DashboardController extends Controller
   public function categories(Request $request) {
     $user = $this->guard()->user();
     $grouped = 'day';
-    $now = new Carbon();
+    $now = Carbon::now('UTC');
     $from = $now->year.'-'.$now->month.'-01 00:00:00';
     $to = $now->year.'-'.$now->month.'-'.$now->day.' 23:59:59';
 
