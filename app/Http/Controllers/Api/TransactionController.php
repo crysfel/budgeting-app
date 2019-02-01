@@ -65,9 +65,9 @@ class TransactionController extends Controller
   public function totals(Request $request)
   {
     $user = $this->guard()->user();
-    $now = new Carbon();
-    $from = $now->year.'-'.$now->month.'-01';
-    $to = $now->year.'-'.$now->month.'-'.$now->day;
+    $now = Carbon::now('UTC');
+    $from = $now->year.'-'.$now->month.'-01 00:00:00';
+    $to = $now->year.'-'.$now->month.'-'.$now->day.' 23:59:59';
     
     $income = Transaction::total([
       'user_id' => $user->id,
