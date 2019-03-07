@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import { useMappedState } from 'redux-react-hook';
+import { useDispatch, useMappedState } from 'redux-react-hook';
 import { navigate } from '@reach/router';
 import { getLatestGroupedByDate, getTotals, getTags, getOverviewData } from 'store/modules/transactions/selectors';
+import { setActiveTransaction } from 'store/modules/transactions/actions';
 
 import Button from 'components/Button';
 import Panel from 'components/Panel';
@@ -23,6 +24,8 @@ const mapState = state => ({
 
 export default function Dashboard() {
   const { latest, totals, overview, tags } = useMappedState(mapState);
+  const dispatch = useDispatch();
+  const editTransaction = (transaction) => dispatch(setActiveTransaction(transaction));
 
   if (latest.length === 0) {
     return (
@@ -55,7 +58,7 @@ export default function Dashboard() {
           <OverviewTags tags={tags} totals={totals} />
         </div>
         <div className="md:flex-1 md:ml-4">
-          <LatestTransactions transactions={latest} />
+          <LatestTransactions transactions={latest} editTransaction={editTransaction} />
         </div>
       </div>
     </Fragment>

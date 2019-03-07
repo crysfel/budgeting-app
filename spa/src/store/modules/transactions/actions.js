@@ -7,6 +7,8 @@ export const GET_TOTALS_BY_DAY = generateActions('transactions/GET_TOTALS_BY_DAY
 export const GET_TOTALS_BY_TAGS = generateActions('transactions/GET_TOTALS_BY_TAGS');
 export const SAVE_TRANSACTION = generateActions('transactions/SAVE_TRANSACTION');
 
+export const SET_ACTIVE_TRANSACTION = 'transactions/SET_ACTIVE_TRANSACTION';
+
 /**
  * Creates a new transaction
  * @param {Object} data 
@@ -80,5 +82,16 @@ export function getPopularTags() {
       url: '/tags/popular',
       data: { namespace: 'App\\Transaction' },
     },
+  };
+}
+
+/**
+ * Set the active transaction to edit in the form
+ * @param {Object} transaction 
+ */
+export function setActiveTransaction(transaction) {
+  return {
+    type: SET_ACTIVE_TRANSACTION,
+    payload: { transaction },
   };
 }

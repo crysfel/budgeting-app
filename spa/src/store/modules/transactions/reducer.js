@@ -1,6 +1,11 @@
-import { GET_LATEST_TRANSACTIONS, GET_TOTALS, GET_TOTALS_BY_DAY, GET_TOTALS_BY_TAGS, GET_POPULAR_TAGS } from './actions';
+import { GET_LATEST_TRANSACTIONS, GET_TOTALS, GET_TOTALS_BY_DAY, GET_TOTALS_BY_TAGS, GET_POPULAR_TAGS, SET_ACTIVE_TRANSACTION } from './actions';
 
 const initialState = {
+  /**
+   * Set the transaction to edit
+   */
+  active: {},
+
   /**
    * The latest transactions for the current user
    */
@@ -69,6 +74,11 @@ export default function reducer(state = initialState, action) {
           ...state.tags,
           popular: action.payload.tags,
         },
+      };
+    case SET_ACTIVE_TRANSACTION:
+      return {
+        ...state,
+        active: action.payload.transaction,
       };
     default:
       return state;
