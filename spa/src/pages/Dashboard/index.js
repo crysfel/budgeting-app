@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 import { navigate } from '@reach/router';
-import { getLatestGroupedByDate, getTotals, getTags, getOverviewData } from 'store/modules/transactions/selectors';
-import { setActiveTransaction } from 'store/modules/transactions/actions';
+import { getActiveTransaction, getLatestGroupedByDate, getTotals, getTags, getOverviewData } from 'store/modules/transactions/selectors';
+import { getPopularTags, setActiveTransaction } from 'store/modules/transactions/actions';
 
 import Button from 'components/Button';
 import Panel from 'components/Panel';
+import TransactionForm from 'components/TransactionForm';
 import OverviewChart from './OverviewChart';
 import OverviewTags from './OverviewTags';
 import LatestTransactions from './LatestTransactions';
@@ -16,16 +17,18 @@ import { ReactComponent as CurrentIcon } from 'components/Icon/portfolio.svg';
 import ChartImage from './charts.svg';
 
 const mapState = state => ({
+  tags: getTags(state),
   latest: getLatestGroupedByDate(state),
   totals: getTotals(state),
   overview: getOverviewData(state),
-  tags: getTags(state),
+  transaction: getActiveTransaction(state),
 });
 
 export default function Dashboard() {
-  const { latest, totals, overview, tags } = useMappedState(mapState);
+  const { latest, totals, overview, tags, transaction } = useMappedState(mapState);
   const dispatch = useDispatch();
   const editTransaction = (transaction) => dispatch(setActiveTransaction(transaction));
+  const closeTransaction = () => editTransaction({ tags: [] });
 
   if (latest.length === 0) {
     return (
@@ -61,6 +64,40 @@ export default function Dashboard() {
           <LatestTransactions transactions={latest} editTransaction={editTransaction} />
         </div>
       </div>
+      { transaction && transaction.id &&
+        <EditTransaction transaction={transaction} tags={tags} closePanel={closeTransaction} />
+      }
     </Fragment>
+  );
+}
+
+function EditTransaction({ closePanel, transaction, tags }) {
+  const [trans, setTransaction] = useState(transaction);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tags.popular.length === 0) {
+      dispatch(getPopularTags());
+    }
+  }, [tags.popular]);
+  const setValue = (event) => {
+    setTransaction({
+      ...trans,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  return (
+    <div className="fixed flex justify-center align-center pin z-20 px-4 bg-back-lighter">
+      <TransactionForm
+        className="md:min-w-2xl"
+        // saveTransaction={saveTransaction}
+        cancelTransaction={closePanel}
+        setValue={setValue}
+        // success={state.success}
+        tags={tags}
+        title="Edit a transaction"
+        transaction={trans}
+      />
+    </div>
   );
 }

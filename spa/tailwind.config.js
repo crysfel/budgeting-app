@@ -47,6 +47,10 @@ let colors = {
   'transparent': 'transparent',
 
   'black': '#22292f',
+  'back-light': 'rgba(0,0,0,0.8)',
+  'back-lighter': 'rgba(0,0,0,0.5)',
+  'back-lightest': 'rgba(0,0,0,0.2)',
+
   'grey-darkest': '#3d4852',
   'grey-darker': '#606f7b',
   'grey-dark': '#8795a1',

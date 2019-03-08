@@ -92,6 +92,12 @@ export function getPopularTags() {
 export function setActiveTransaction(transaction) {
   return {
     type: SET_ACTIVE_TRANSACTION,
-    payload: { transaction },
+    payload: {
+      transaction: {
+        ...transaction,
+        amount: `${transaction.amount}`,
+        tags: transaction.tags.join(','),
+      },
+    },
   };
 }

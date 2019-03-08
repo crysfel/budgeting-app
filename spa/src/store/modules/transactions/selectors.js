@@ -3,6 +3,8 @@ import getDaysInMonth from 'date-fns/get_days_in_month';
 
 const today = new Date();
 
+export const getActiveTransaction = state => state.transactions.active;
+
 export const getLatestTransactions = state => state.transactions.latest;
 
 export const getTotals = state => state.transactions.totals;

@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 import { format } from 'date-fns'
 import { postTransaction, getLatestTransactions, getPopularTags } from 'store/modules/transactions/actions';
@@ -43,32 +43,13 @@ export default function AddTransaction({ isExpense, transaction }) {
       dispatch(getPopularTags());
     }
   }, [tags.popular]);
-  const addOrRemoveTag = useCallback((value) => {
-    const hasTag = !!(state.tags && (state.tags.toLowerCase().indexOf(value.toLowerCase()) > -1));
-    const currentTags = state.tags.split(',').filter(tg => tg !== '');
-
-    if (hasTag) {
-      // Remove tag
-      setState({
-        ...state,
-        tags: currentTags.filter(tg => tg !== value).join(','),
-      })
-    } else {
-      // Add Tag
-      currentTags.push(value);
-      setState({
-        ...state,
-        tags: currentTags.join(','),
-      })
-    }
-  });
+  
 
   const setValue = (event, field) => setState({ ...state, [field]: event.target.value });
   const title = isExpense ? 'Expense' : 'Income' ;
 
   return (
     <TransactionForm
-      addOrRemoveTag={addOrRemoveTag}
       saveTransaction={saveTransaction}
       setValue={setValue}
       success={state.success}
