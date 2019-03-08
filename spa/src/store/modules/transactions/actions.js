@@ -125,6 +125,7 @@ export function refreshDashboard() {
     return Promise.all([
       dispatch(getLatestTransactions()),
       dispatch(getTotalsByTags()),
+      dispatch(getTotalsByDay()),
       dispatch(getTotals()),
     ]);
   };

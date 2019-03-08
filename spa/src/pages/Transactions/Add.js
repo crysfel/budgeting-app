@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 import { format } from 'date-fns'
-import { postTransaction, getLatestTransactions, getPopularTags } from 'store/modules/transactions/actions';
+import { postTransaction, getPopularTags, refreshDashboard } from 'store/modules/transactions/actions';
 import { getTags } from 'store/modules/transactions/selectors';
 import TransactionForm from 'components/TransactionForm';
 
@@ -30,7 +30,7 @@ export default function AddTransaction({ isExpense, transaction }) {
       }))
       .then((response) => {
         if (response.payload.success) {
-          dispatch(getLatestTransactions());
+          dispatch(refreshDashboard());
           setState({
             ...initialState,
             success: true,
@@ -45,7 +45,7 @@ export default function AddTransaction({ isExpense, transaction }) {
   }, [tags.popular]);
   
 
-  const setValue = (event, field) => setState({ ...state, [field]: event.target.value });
+  const setValue = (event) => setState({ ...state, [event.target.name]: event.target.value });
   const title = isExpense ? 'Expense' : 'Income' ;
 
   return (
