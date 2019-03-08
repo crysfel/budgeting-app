@@ -25,6 +25,21 @@ export function postTransaction(data) {
 }
 
 /**
+ * Updates an existing transaction
+ * @param {Object} data 
+ */
+export function putTransaction(data) {
+  return {
+    types: SAVE_TRANSACTION,
+    promise: {
+      url: `/transactions/${data.id}`,
+      method: 'put',
+      data,
+    },
+  };
+}
+
+/**
  * Get the latest transactions for the current user
  */
 export function getLatestTransactions() {
@@ -99,5 +114,18 @@ export function setActiveTransaction(transaction) {
         tags: transaction.tags.join(','),
       },
     },
+  };
+}
+
+/**
+ * Refreshes the dashbaord widgets all at once!
+ */
+export function refreshDashboard() {
+  return (dispatch) => {
+    return Promise.all([
+      dispatch(getLatestTransactions()),
+      dispatch(getTotalsByTags()),
+      dispatch(getTotals()),
+    ]);
   };
 }

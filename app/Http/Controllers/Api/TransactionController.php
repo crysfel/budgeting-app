@@ -164,7 +164,7 @@ class TransactionController extends Controller
 
       $transaction->fill($request->all());
       $transaction->save();
-      $record->setTags($request->input('tags'));
+      $transaction->setTags($request->input('tags'));
 
       return response()->json([
         'success'   => true,

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 import { navigate } from '@reach/router';
 import { getActiveTransaction, getLatestGroupedByDate, getTotals, getTags, getOverviewData } from 'store/modules/transactions/selectors';
-import { getPopularTags, setActiveTransaction } from 'store/modules/transactions/actions';
+import { getPopularTags, putTransaction, refreshDashboard, setActiveTransaction } from 'store/modules/transactions/actions';
 
 import Button from 'components/Button';
 import Panel from 'components/Panel';
@@ -85,15 +85,26 @@ function EditTransaction({ closePanel, transaction, tags }) {
       [event.target.name]: event.target.value,
     });
   }
+  const updateTransaction = () => dispatch(putTransaction(trans))
+    .then((response) => {
+      if (response.payload.success) {
+        dispatch(refreshDashboard());
+        setTransaction({
+          ...trans,
+          success: true,
+        });
+        dispatch(closePanel());
+      }
+    });
 
   return (
     <div className="fixed flex justify-center align-center pin z-20 px-4 bg-back-lighter">
       <TransactionForm
         className="md:min-w-2xl"
-        // saveTransaction={saveTransaction}
+        saveTransaction={updateTransaction}
         cancelTransaction={closePanel}
         setValue={setValue}
-        // success={state.success}
+        success={trans.success}
         tags={tags}
         title="Edit a transaction"
         transaction={trans}
